@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Simphony.Common">
+      <HintPath>..\Core8\Simphony.Common\bin\Release\net8.0\Simphony.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Simphony.Mathematics">
+      <HintPath>..\Core8\Simphony.Simulation\bin\Release\net8.0\Simphony.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Simphony.Simulation">
+      <HintPath>..\Core8\Simphony.Simulation\bin\Release\net8.0\Simphony.Simulation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
