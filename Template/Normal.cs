@@ -1,28 +1,31 @@
 ﻿namespace CYCLONE.Template
 {
-	using CYCLONE.Template.Model;
+	using CYCLONE.Template.Model.Element;
 	using Simphony.Mathematics;
-	using Simphony.Simulation;
-	using System.Collections.Generic;
+    using Simphony.Simulation;
+    using System.Collections.Generic;
 
-	public class Normal: ElementTask<Entity>
+    public class Normal: ElementTask
 	{
 		private double LastTime;
 		private Boolean FirstEntity = false;
 
-		public NumericStatistic InterArrivalTime = new NumericStatistic("InterArrivalTime", false);
-		public Normal(Distribution duration, List<Element<Entity>> followers) :
-			base(duration, followers)
+		public NumericStatistic InterArrivalTime = new("InterArrivalTime", false);
+
+		public Normal(string id, string description, Distribution duration, IList<IElement> followers) :
+			base(id, description, duration, followers)
 		{
-			
+			this.AddStatistics(this.InterArrivalTime);
 		}
 
-		protected void InitializeRun()
+		public override void InitializeRun(int runIndex)
 		{
-
+			base.InitializeRun(runIndex);
+			this.LastTime = double.NaN;
+			this.FirstEntity = true;
 		}
 
-	    protected override void TransferIn(Entity entity)
+	    public override void TransferIn(Entity entity)
 		{
 			if (!this.FirstEntity)
 			{
@@ -33,8 +36,7 @@
 				this.FirstEntity = false;
 			}
 			this.LastTime = this.Engine.TimeNow;
-
-
+			base.TransferIn(entity);
 		}
 	}
 }
