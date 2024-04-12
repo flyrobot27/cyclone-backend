@@ -3,6 +3,10 @@
 	using Simphony;
 	using Simphony.Simulation;
 	using System;
+	using System.ComponentModel;
+	using System.Diagnostics;
+	using System.Text;
+
 	public abstract class ElementBase(string id, string? description)
 	{
 		protected DiscreteEventEngine Engine = new();
@@ -12,6 +16,8 @@
 
 		public string? Description { get; } = description;
 		public string ID { get; } = id;
+
+		public bool Debug { get; set; } = false;
 
 		public virtual void FinalizeRun(int runIndex)
 		{
@@ -49,6 +55,40 @@
 			}
 		}
 
+		public void WriteDebugMessage(Entity entity, string? message)
+		{
+			if (this.Debug)
+			{
+				var converter = new TypeConverter();
+				var builder = new StringBuilder();
+
+				builder.Append("Debugging Output:");
+				builder.Append('\t');
+				builder.Append(this.Engine.RunIndex + 1);
+				builder.Append('\t');
+				builder.Append(converter.ConvertToString(this.Engine.TimeNow));
+				builder.Append('\t');
+				builder.Append(this.GetType().Name);
+				builder.Append('\t');
+				builder.Append(this.Description);
+				builder.Append('\t');
+
+				string entityType = entity.GetType().Name;
+				builder.Append(entityType);
+				builder.Append('\t');
+
+				string entityName = entity.Name;
+				builder.Append(entityName);
+				builder.Append('\t');
+
+				if (message != null)
+				{
+					builder.Append(message);
+				}
+
+				Trace.WriteLine(builder, "Debug");
+			}
+		}
 
 		protected void AddResource(params Resource[] resources)
 		{

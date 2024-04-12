@@ -25,8 +25,15 @@
 			this.FirstEntity = true;
 		}
 
-	    public override void TransferIn(Entity entity)
+		public override void OnTransferOut(Entity entity)
 		{
+			this.WriteDebugMessage(entity, "Departed");
+			base.OnTransferOut(entity);
+		}
+
+		public override void TransferIn(Entity entity)
+		{
+			this.WriteDebugMessage(entity, "Arrived");
 			if (!this.FirstEntity)
 			{
 				this.Engine.CollectStatistic(this.InterArrivalTime, this.Engine.TimeNow - this.LastTime);

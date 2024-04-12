@@ -21,10 +21,16 @@
 			this.InitialLengthValue = initialLength;
 		}
 
+		public int GetCurrentLength()
+		{
+			return this.InnerQueue.Count;
+		}
+
 		public Entity Dequeue()
 		{
 			var entity = this.Engine.DequeueEntity<Entity>(this.InnerQueue);
 			this.Engine.CollectStatistic(this.PercentNonempty, Math.Sign(this.InnerQueue.Count));
+			this.WriteDebugMessage(entity, "Departed");
 			return entity;
 		}
 
@@ -45,6 +51,8 @@
 
 		private void InitializeLength(Entity entity)
 		{
+			this.WriteDebugMessage(entity, string.Format("Initialized to length {0}", this.InitialLengthValue));
+
 			for (int i = 0; i < this.InitialLengthValue; i++)
 			{
 				this.Engine.EnqueueEntity(new Entity(), this.InnerQueue);
@@ -73,7 +81,15 @@
 
 		public override void TransferIn(Entity entity)
 		{
-			throw new NotImplementedException();
+			this.WriteDebugMessage(entity, "Arrived");
+			this.Engine.EnqueueEntity(entity, this.InnerQueue);
+			this.Engine.CollectStatistic(this.PercentNonempty, Math.Sign(this.InnerQueue.Count));
+
+			if (!ScanTriggered)
+			{
+				this.Engine.ScheduleEvent(new Entity(), new Action<Entity>(Scan), 0);
+				ScanTriggered = true;
+			}
 		}
 	}
 }
