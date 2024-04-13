@@ -60,13 +60,13 @@
 	// TODO: Implement blocks for duration, resource and distribution
 	public class DurationBlock
 	{
-		public required DurationType Type { get; set; }
+		public required CYCLONE.DurationType Type { get; set; }
 		public required DistributionBlock Distribution { get; set; }
 	}
 
 	public class DistributionBlock
 	{
-		public required Distribution Type { get; set; }
+		public required CYCLONE.DistributionType Type { get; set; }
 	}
 
 	public class ResourceBlock

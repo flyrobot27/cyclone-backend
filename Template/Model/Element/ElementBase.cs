@@ -7,20 +7,26 @@
 	using System.Diagnostics;
 	using System.Text;
 
-	public abstract class ElementBase(string id, string? description)
+	public abstract class ElementBase(string label, string? description, NetworkType type): IElement
 	{
-		protected DiscreteEventEngine Engine = new();
-		private readonly List<WaitingFile> waitingFiles = new List<WaitingFile>();
-		private readonly List<Statistic> statistics = new List<Statistic>();
-		private readonly List<Resource> resources = new List<Resource>();
+		private readonly List<WaitingFile> waitingFiles = [];
+		private readonly List<Statistic> statistics = [];
+		private readonly List<Resource> resources = [];
+
+		private bool isInitialized = false;
+
+		protected DiscreteEventEngine Engine { get; private set; } = new();
 
 		public string? Description { get; } = description;
-		public string ID { get; } = id;
+		public string Label { get; } = label;
+		public NetworkType NetworkType { get; } = type;
 
 		public bool Debug { get; set; } = false;
 
 		public virtual void FinalizeRun(int runIndex)
 		{
+			this.ExceptionIfNotInitialized();
+
 			foreach (var wf in this.waitingFiles)
 			{
 				wf.FinalizeRun(runIndex, this.Engine.TimeNow);
@@ -53,6 +59,13 @@
 			{
 				resource.InitializeRun(runIndex);
 			}
+
+			this.isInitialized = true;
+		}
+
+		public void SetDiscreteEventEngine(DiscreteEventEngine engine)
+		{
+			this.Engine = engine;
 		}
 
 		public void WriteDebugMessage(Entity entity, string? message)
@@ -90,10 +103,12 @@
 			}
 		}
 
+		public abstract void TransferIn(Entity entity);
+
 		protected void AddResource(params Resource[] resources)
 		{
 			resources.ExceptionIfNull(nameof(resources));
-			resources.ExceptionIfContainsNull("resources");
+			resources.ExceptionIfContainsNull(nameof(resources));
 			this.resources.AddRange(resources);
 
 		}
@@ -101,20 +116,23 @@
 		protected void AddWaitingFile(params WaitingFile[] waitingFiles)
 		{
 			waitingFiles.ExceptionIfNull(nameof(waitingFiles));
-			waitingFiles.ExceptionIfContainsNull("waitingFiles");
+			waitingFiles.ExceptionIfContainsNull(nameof(waitingFiles));
 			this.waitingFiles.AddRange(waitingFiles);
 		}
 
 		protected void AddStatistics(params Statistic[] statistics)
 		{
 			statistics.ExceptionIfNull(nameof(statistics));
-			statistics.ExceptionIfContainsNull("statistics");
+			statistics.ExceptionIfContainsNull(nameof(statistics));
 			this.statistics.AddRange(statistics);
 		}
 
-		protected void ClearWaitingFiles() 
-		{ 
-			this.waitingFiles.Clear(); 
+		private void ExceptionIfNotInitialized()
+		{
+			if (!this.isInitialized)
+			{
+				throw new ModelExecutionException("Element is not initialized");
+			}
 		}
 	}
 }

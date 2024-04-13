@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\CYCLONE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\normal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\normal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\model\\element\\elementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\model\\element\\elementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\CYCLONE\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Title": "Normal.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\Template\\Normal.cs",
+              "RelativeDocumentMoniker": "Template\\Normal.cs",
+              "ToolTip": "D:\\CYCLONE\\Template\\Normal.cs",
+              "RelativeToolTip": "Template\\Normal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T04:27:15.232Z",
+              "WhenOpened": "2024-04-12T22:52:30.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Scenario.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\Template\\Scenario.cs",
+              "RelativeDocumentMoniker": "Template\\Scenario.cs",
+              "ToolTip": "D:\\CYCLONE\\Template\\Scenario.cs",
+              "RelativeToolTip": "Template\\Scenario.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAAwD0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T22:51:12.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Queue.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\Template\\Queue.cs",
+              "RelativeDocumentMoniker": "Template\\Queue.cs",
+              "ToolTip": "D:\\CYCLONE\\Template\\Queue.cs",
+              "RelativeToolTip": "Template\\Queue.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T21:11:58.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ElementBase.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\Template\\Model\\Element\\ElementBase.cs",
+              "RelativeDocumentMoniker": "Template\\Model\\Element\\ElementBase.cs",
+              "ToolTip": "D:\\CYCLONE\\Template\\Model\\Element\\ElementBase.cs",
+              "RelativeToolTip": "Template\\Model\\Element\\ElementBase.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAYwGoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T20:44:59.926Z",
               "EditorCaption": ""
             }
           ]

@@ -20,7 +20,7 @@
 		NST
 	}
 
-	public enum Distribution
+	public enum DistributionType
 	{
 		DETERMINISTIC,
 		EXPONENTIAL,

@@ -4,20 +4,22 @@
 	using Simphony;
 	using Simphony.Simulation;
 
-	public class Queue : ElementFlow
+	public class Queue : ElementBase, IElement
 	{
-		private static IList<Combi> CombiList = [];
-		private int InitialLengthValue = 0;
+		private static readonly IList<Combi> CombiList = [];
+		private readonly int InitialLengthValue = 0;
 		private static bool ScanTriggered = false;
-		private WaitingFile InnerQueue = new WaitingFile();
+		private readonly WaitingFile InnerQueue = new();
 
-		public NumericStatistic PercentNonempty = new NumericStatistic("PercentNonempty", true);
+		public readonly NumericStatistic PercentNonempty = new("PercentNonempty", true);
 
-		public Queue(string id, string? description, int initialLength = 0) :
-			base(id, description)
+		public Queue(string label, string? description, int initialLength = 0) :
+			base(label, description, NetworkType.QUEUE)
 		{
-			this.AddWaitingFile(InnerQueue);
 			initialLength.ExceptionIfNegative(nameof(initialLength));
+			this.AddWaitingFile(this.InnerQueue);
+			this.AddStatistics(this.PercentNonempty);
+
 			this.InitialLengthValue = initialLength;
 		}
 
