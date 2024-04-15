@@ -1,7 +1,8 @@
 ﻿namespace CYCLONE.Template
 {
-    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Template.Interfaces;
     using CYCLONE.Types;
+    using Simphony;
     using Simphony.Mathematics;
     using Simphony.Simulation;
 
@@ -11,12 +12,10 @@
     /// <param name="label">The label of the element. Must be unique across all elements.</param>
     /// <param name="description">The description of the element.</param>
     /// <param name="duration">The distribution representing the delay duration.</param>
-    /// <param name="followers">The element following the Combi.</param>
-    /// <param name="preceders">The Queues preceding the Combi.</param>
-    public class Combi(string label, string description, Distribution duration, IList<IElement> followers, IList<Queue> preceders)
-        : Normal(label, description, duration, followers, NetworkType.COMBI)
+    public class Combi(string label, string description, Distribution duration)
+        : Normal(label, description, duration, CycloneNetworkType.COMBI), IAddPreceders<CycloneNetworkType>
     {
-        private readonly IList<Queue> queueList = preceders;
+        private readonly IList<Queue> queueList = [];
 
         /// <summary>
         /// Try to execute the combi. Will Try to dequeue from all queues and transfer the entity to the followers.
@@ -48,6 +47,23 @@
             // transfer entity
             this.TransferIn(entity);
             return true;
+        }
+
+        /// <summary>
+        /// Add preceding queue(s) to the combi.
+        /// </summary>
+        /// <param name="elements">The preceding <see cref="Queue"/>.</param>
+        public void AddPreceders(IElement<CycloneNetworkType>[] elements)
+        {
+            foreach (var element in elements)
+            {
+                if (element is not Queue queue)
+                {
+                    throw new InvalidOperationException("Only Queue elements can be added as preceders to a Combi element.");
+                }
+
+                this.queueList.Add(queue);
+            }
         }
     }
 }

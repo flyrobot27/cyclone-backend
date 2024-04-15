@@ -14,7 +14,7 @@
     /// <summary>
     /// Represents the Network Type of the CYCLONE model.
     /// </summary>
-    public enum NetworkType
+    public enum CycloneNetworkType
     {
         /// <summary>
         /// The Combi Network Type.

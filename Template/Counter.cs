@@ -17,9 +17,8 @@
         /// </summary>
         /// <param name="label">The label of the element. Must be unique across all elements.</param>
         /// <param name="description">The description of the element.</param>
-        /// <param name="followers">The elements following the Counter.</param>
-        public Counter(string label, string? description, IList<IElement> followers)
-            : base(label, description, followers, NetworkType.FUNCTION_COUNTER)
+        public Counter(string label, string? description)
+            : base(label, description, CycloneNetworkType.FUNCTION_COUNTER)
         {
             this.FirstTime = new NumericStatistic("FirstTime", false);
             this.InterArrivalTime = new NumericStatistic("InterArrivalTime", NumericStatisticInterpretation.InterarrivalTime);

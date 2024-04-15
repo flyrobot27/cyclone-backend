@@ -24,11 +24,11 @@
     /// Network block class representing the JSON structure Network Input.
     /// </summary>
     [JsonPolymorphic(TypeDiscriminatorPropertyName = nameof(Type))]
-    [JsonDerivedType(typeof(CombiBlock), nameof(NetworkType.COMBI))]
-    [JsonDerivedType(typeof(NormalNetworkBlock), nameof(NetworkType.NORMAL))]
-    [JsonDerivedType(typeof(QueueBlock), nameof(NetworkType.QUEUE))]
-    [JsonDerivedType(typeof(FunctionConsolidateBlock), nameof(NetworkType.FUNCTION_CONSOLIDATE))]
-    [JsonDerivedType(typeof(FunctionCounterBlock), nameof(NetworkType.FUNCTION_COUNTER))]
+    [JsonDerivedType(typeof(CombiBlock), nameof(CycloneNetworkType.COMBI))]
+    [JsonDerivedType(typeof(NormalNetworkBlock), nameof(CycloneNetworkType.NORMAL))]
+    [JsonDerivedType(typeof(QueueBlock), nameof(CycloneNetworkType.QUEUE))]
+    [JsonDerivedType(typeof(FunctionConsolidateBlock), nameof(CycloneNetworkType.FUNCTION_CONSOLIDATE))]
+    [JsonDerivedType(typeof(FunctionCounterBlock), nameof(CycloneNetworkType.FUNCTION_COUNTER))]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
     public class NetworkBlock
     {
@@ -36,7 +36,7 @@
         /// Gets or sets the type of the network block.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        required public NetworkType Type { get; set; }
+        required public CycloneNetworkType Type { get; set; }
 
         /// <summary>
         /// Gets or sets the label of the network block.

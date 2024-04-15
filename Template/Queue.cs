@@ -9,7 +9,7 @@
     /// <summary>
     /// Represents a QUEUE element in the CYCLONE model.
     /// </summary>
-    public class Queue : ElementBase, IElement
+    public class Queue : CycloneElementBase
     {
         private static readonly IList<Combi> CombiList = [];
         private static bool scanTriggered = false;
@@ -24,7 +24,7 @@
         /// <param name="description">The description of the queue.</param>
         /// <param name="initialLength">The initial length of the queue.</param>
         public Queue(string label, string? description, int initialLength = 0)
-            : base(label, description, NetworkType.QUEUE)
+            : base(label, description, CycloneNetworkType.QUEUE)
         {
             initialLength.ExceptionIfNegative(nameof(initialLength));
             this.AddWaitingFile(this.innerQueue);

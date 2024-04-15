@@ -1,7 +1,5 @@
 ﻿namespace CYCLONE.Template
 {
-    using System.Collections.Generic;
-
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Types;
     using Simphony;
@@ -12,11 +10,10 @@
     /// </summary>
     /// <param name="label">The label of the element. Must be unique across all elements.</param>
     /// <param name="description">The description of the element.</param>
-    /// <param name="followers">The elements following the Consolidate.</param>
     /// <param name="divideByValue">The values to divide the number of entities by.</param>
     /// <param name="multiplyByValue">The values to multiply the number of entities by.</param>
-    public class Consolidate(string label, string? description, IList<IElement> followers, int divideByValue = 1, int multiplyByValue = 1) 
-        : ElementFunction(label, description, followers, NetworkType.FUNCTION_CONSOLIDATE)
+    public class Consolidate(string label, string? description, int divideByValue = 1, int multiplyByValue = 1) 
+        : ElementFunction(label, description, CycloneNetworkType.FUNCTION_CONSOLIDATE)
     {
         private readonly int divideByValue = divideByValue;
         private readonly int multiplyByValue = multiplyByValue;

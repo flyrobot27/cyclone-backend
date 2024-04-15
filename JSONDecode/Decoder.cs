@@ -2,6 +2,7 @@
 {
     using System.Text.Json;
     using CYCLONE.Template;
+    using CYCLONE.Types;
     using Simphony.Simulation;
 
     /// <summary>
@@ -54,7 +55,7 @@
         public Scenario ToScenario()
         {
             var length = this.result.LengthOfRun;
-            //var terminationCount = this.result.NoOfCycles;
+            //// var terminationCount = this.result.NoOfCycles;
             var engine = new DiscreteEventEngine();
 
             var scenario = new Scenario(engine: engine, length: length);
@@ -65,7 +66,5 @@
 
             return scenario;
         }
-
-
     }
 }

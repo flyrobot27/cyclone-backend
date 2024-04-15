@@ -2,7 +2,9 @@
 {
     using System.Collections.Generic;
 
-    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Template.Interfaces;
+    using CYCLONE.Types;
+
     using Simphony;
     using Simphony.Mathematics;
     using Simphony.Simulation;
@@ -13,7 +15,7 @@
     public class Scenario : IScenario
     {
         private readonly DiscreteEventEngine engine;
-        private readonly List<IElement> elements = [];
+        private readonly List<IElement<CycloneNetworkType>> elements = [];
         private readonly double length;
         private readonly int numberOfRuns;
         private readonly int seed;
@@ -109,7 +111,7 @@
         /// Inserts an element into the scenario.
         /// </summary>
         /// <param name="element">The element to insert.</param>
-        public void InsertElement(IElement element)
+        public void InsertElement(IElement<CycloneNetworkType> element)
         {
             this.elements.Add(element);
         }

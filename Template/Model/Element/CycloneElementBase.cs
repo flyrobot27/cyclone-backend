@@ -3,17 +3,17 @@
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Text;
-
+    using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Exception;
     using CYCLONE.Types;
     using Simphony;
     using Simphony.Simulation;
 
     /// <summary>
-    /// Base class for all elements in the model.
+    /// Base class for all CYCLONE elements in the model.
     /// </summary>
-    public abstract class ElementBase
-        : IElement
+    public abstract class CycloneElementBase
+        : IElement<CycloneNetworkType>
     {
         private static readonly List<string> ExistingLabels = [];
 
@@ -24,12 +24,12 @@
         private bool isInitialized = false;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ElementBase"/> class.
+        /// Initializes a new instance of the <see cref="CycloneElementBase"/> class.
         /// </summary>
         /// <param name="label">The label of the element. Must be unique across all elements.</param>
         /// <param name="description">The description of the element.</param>
         /// <param name="type">The Network Type of the element.</param>
-        public ElementBase(string label, string? description, NetworkType type)
+        public CycloneElementBase(string label, string? description, CycloneNetworkType type)
         {
             this.Description = description;
             
@@ -40,7 +40,7 @@
 
             ExistingLabels.Add(label);
             this.Label = label;
-            this.NetworkType = type;
+            this.ElementType = type;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@
         /// <summary>
         /// Gets the Network Type of the element.
         /// </summary>
-        public NetworkType NetworkType { get; }
+        public CycloneNetworkType ElementType { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether debugging is enabled.
@@ -68,10 +68,7 @@
         /// </summary>
         protected DiscreteEventEngine Engine { get; private set; } = new ();
 
-        /// <summary>
-        /// Finalizes the element for a simulation run.
-        /// </summary>
-        /// <param name="runIndex">The run index. Useful when using Monte-Carlo Simulation. If only a single run, set runIndex to 0.</param>
+        /// <inheritdoc/>
         public virtual void FinalizeRun(int runIndex)
         {
             this.ExceptionIfNotInitialized();
@@ -92,10 +89,7 @@
             }
         }
 
-        /// <summary>
-        /// Initialize the element for a simulation run.
-        /// </summary>
-        /// <param name="runIndex">The run index. Useful when using Monte-Carlo Simulation. If only a single run, set runIndex to 0.</param>
+        /// <inheritdoc/>
         public virtual void InitializeRun(int runIndex)
         {
             foreach (var wf in this.waitingFiles)
@@ -116,10 +110,7 @@
             this.isInitialized = true;
         }
 
-        /// <summary>
-        /// Sets the Discrete Event Engine.
-        /// </summary>
-        /// <param name="engine">The Discrete Event Engine.</param>
+        /// <inheritdoc/>
         public void SetDiscreteEventEngine(DiscreteEventEngine engine)
         {
             this.Engine = engine;
@@ -165,10 +156,7 @@
             }
         }
 
-        /// <summary>
-        /// Abstract method that defines the behavior when an entity is transferred in.
-        /// </summary>
-        /// <param name="entity">The entity to be transferred in.</param>
+        /// <inheritdoc/>
         public abstract void TransferIn(Entity entity);
 
         /// <summary>
