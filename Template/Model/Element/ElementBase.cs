@@ -2,10 +2,10 @@
 {
 	using Simphony;
 	using Simphony.Simulation;
-	using System;
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Text;
+	using CYCLONE.Template.Model.Exception;
 
 	public abstract class ElementBase(string label, string? description, NetworkType type): IElement
 	{

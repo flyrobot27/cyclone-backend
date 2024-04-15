@@ -36,6 +36,11 @@
 			return entity;
 		}
 
+		public bool NonZeroInitialLength()
+		{
+			return this.InitialLengthValue > 0;
+		}
+
 		private static void Scan(Entity entity)
 		{
 			foreach (var combi in CombiList)
