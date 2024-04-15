@@ -1,6 +1,7 @@
 ﻿namespace CYCLONE.Template
 {
     using CYCLONE.Template.Model.Element;
+    using CYCLONE.Template.Model.Exception;
     using CYCLONE.Types;
     using Simphony;
     using Simphony.Simulation;
@@ -66,6 +67,15 @@
         {
             return this.initialLengthValue > 0;
         }
+        
+        /// <summary>
+        /// Add a combi to the list of combis. Shared for all instances of the <see cref="Queue"/>.
+        /// </summary>
+        /// <param name="combi">The combi element.</param>
+        public void AddCombi(Combi combi)
+        {
+            CombiList.Add(combi);
+        }
 
         /// <inheritdoc/>
         public override void InitializeRun(int runIndex)
@@ -99,7 +109,10 @@
         {
             foreach (var combi in CombiList)
             {
-                combi.ExceptionIfNull(nameof(combi));
+                if (combi == null)
+                {
+                    throw new ModelExecutionException("Null items in " + nameof(CombiList));
+                }
 
                 while (combi.TryExecute())
                 {
