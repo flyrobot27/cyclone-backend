@@ -54,10 +54,10 @@
         public Scenario ToScenario()
         {
             var length = this.result.LengthOfRun;
-            var terminationCount = this.result.NoOfCycles;
+            //var terminationCount = this.result.NoOfCycles;
             var engine = new DiscreteEventEngine();
 
-            var scenario = new Scenario(engine, length, terminationCount);
+            var scenario = new Scenario(engine: engine, length: length);
 
             foreach (NetworkBlock block in this.result.NetworkInput)
             {
