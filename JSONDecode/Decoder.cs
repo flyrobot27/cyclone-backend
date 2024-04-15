@@ -13,7 +13,7 @@
     /// </summary>
     public class Decoder
     {
-        private readonly Model result;
+        private readonly ModelBlock result;
         private readonly string jstring;
 
         /// <summary>
@@ -29,7 +29,7 @@
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true,
             };
-            var decoded = JsonSerializer.Deserialize<Model>(JSONBody, deserializeOptions);
+            var decoded = JsonSerializer.Deserialize<ModelBlock>(JSONBody, deserializeOptions);
             if (decoded != null)
             {
                 this.result = decoded;

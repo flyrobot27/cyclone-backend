@@ -4,9 +4,9 @@
     using CYCLONE.Types;
 
     /// <summary>
-    /// Model class representing the JSON structure.
+    /// Model Block class representing the JSON structure.
     /// </summary>
-    public class Model
+    public class ModelBlock
     {
         /// <summary>
         /// Gets or sets the type of the main block.
@@ -48,18 +48,18 @@
     public class NetworkBlock
     {
         /// <summary>
-        /// Gets or sets the type of the network block.
+        /// Gets or sets the type of the <see cref="NetworkBlock"/>.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         required public CycloneNetworkType Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the label of the network block.
+        /// Gets or sets the label of the <see cref="NetworkBlock"/>.
         /// </summary>
         required public int Label { get; set; }
 
         /// <summary>
-        /// Gets or sets the description of the network block.
+        /// Gets or sets the description of the <see cref="NetworkBlock"/>.
         /// </summary>
         required public string Description { get; set; }
     }
@@ -68,20 +68,20 @@
     /// Combi block class representing the JSON structure in Network Input.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
-    public class CombiBlock : NetworkBlock
+    public class CombiBlock : NetworkBlock, IBlockHasFollowers, IBlockHasPreceders
     {
         /// <summary>
-        /// Gets or sets the <see cref="DurationBlock"/> of the combi block.
+        /// Gets or sets the <see cref="DurationBlock"/> of the <see cref="CombiBlock"/>.
         /// </summary>
         required public DurationBlock Set { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ReferenceBlock"/> follwing the combi block.
+        /// Gets or sets the list of <see cref="ReferenceBlock"/> follwing the <see cref="CombiBlock"/>.
         /// </summary>
         required public List<ReferenceBlock> Followers { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ReferenceBlock"/> preceding the combi block.
+        /// Gets or sets the list of <see cref="ReferenceBlock"/> preceding the <see cref="CombiBlock"/>.
         /// </summary>
         required public List<ReferenceBlock> Preceders { get; set; }
     }
@@ -90,15 +90,15 @@
     /// Normal network block class representing the JSON structure in Network Input.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
-    public class NormalNetworkBlock : NetworkBlock
+    public class NormalNetworkBlock : NetworkBlock, IBlockHasFollowers
     {
         /// <summary>
-        /// Gets or sets the <see cref="DurationBlock"/> of the combi block.
+        /// Gets or sets the <see cref="DurationBlock"/> of the <see cref="NormalNetworkBlock"/>.
         /// </summary>
         required public DurationBlock Set { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ReferenceBlock"/> follwing the Normal block.
+        /// Gets or sets the list of <see cref="ReferenceBlock"/> follwing the <see cref="NormalNetworkBlock"/>.
         /// </summary>
         required public List<ReferenceBlock> Followers { get; set; }
     }
@@ -115,7 +115,7 @@
         required public int NumberToBeGenerated { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ResourceBlock"/> of the queue block.
+        /// Gets or sets the <see cref="ResourceBlock"/> of the <see cref="QueueBlock"/>.
         /// </summary>
         public ResourceBlock? ResourceInput { get; set; }
     }
@@ -124,7 +124,7 @@
     /// Function Consolidate block class representing the JSON structure in Network Input.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
-    public class FunctionConsolidateBlock : NetworkBlock
+    public class FunctionConsolidateBlock : NetworkBlock, IBlockHasFollowers
     {
         /// <summary>
         /// Gets or sets the Number of entities to consolidate.
@@ -132,7 +132,7 @@
         required public int NumberToConsolidate { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ReferenceBlock"/> following the Function Consolidate block.
+        /// Gets or sets the list of <see cref="ReferenceBlock"/> following the <see cref="FunctionConsolidateBlock"/>.
         /// </summary>
         required public List<ReferenceBlock> Followers { get; set; }
     }
@@ -141,7 +141,7 @@
     /// Function Counter block class representing the JSON structure in Network Input.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
-    public class FunctionCounterBlock : NetworkBlock
+    public class FunctionCounterBlock : NetworkBlock, IBlockHasFollowers
     {
         /// <summary>
         /// Gets or sets the quantity of elements initially in the counter.
@@ -149,7 +149,7 @@
         required public int Quantity { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="ReferenceBlock"/> following the Function Counter block.
+        /// Gets or sets the list of <see cref="ReferenceBlock"/> following the <see cref="FunctionCounterBlock"/>.
         /// </summary>
         required public List<ReferenceBlock> Followers { get; set; }
     }
@@ -181,13 +181,13 @@
     public class DurationBlock
     {
         /// <summary>
-        /// Gets or sets the type of the duration block.
+        /// Gets or sets the type of the <see cref="DurationBlock"/>.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         required public DurationType Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="DistributionBlock"/> of the duration block.
+        /// Gets or sets the <see cref="DistributionBlock"/> of the <see cref="DurationBlock"/>.
         /// </summary>
         required public DistributionBlock Distribution { get; set; }
     }
@@ -235,7 +235,7 @@
     public class DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the type of the distribution block.
+        /// Gets or sets the type of the <see cref="DistributionBlock"/>.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         required public DistributionType Type { get; set; }
@@ -248,7 +248,7 @@
     public class DeterministicBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the constant value of the Deterministic Distribution.
+        /// Gets or sets the constant value of the <see cref="Simphony.Mathematics.Constant"/> Distribution.
         /// </summary>
         required public double Constant { get; set; }
     }
@@ -260,7 +260,7 @@
     public class ExponentialBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the mean value of the Exponential Distribution.
+        /// Gets or sets the mean value of the <see cref="Simphony.Mathematics.Exponential"/> Distribution.
         /// </summary>
         required public double Mean { get; set; }
     }
@@ -272,12 +272,12 @@
     public class UniformBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the lower bound of the Uniform Distribution.
+        /// Gets or sets the lower bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Low { get; set; }
 
         /// <summary>
-        /// Gets or sets the upper bound of the Uniform Distribution.
+        /// Gets or sets the upper bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double High { get; set; }
     }
@@ -289,17 +289,17 @@
     public class TriangularBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the lower bound of the Triangular Distribution.
+        /// Gets or sets the lower bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Low { get; set; }
 
         /// <summary>
-        /// Gets or sets the upper bound of the Triangular Distribution.
+        /// Gets or sets the upper bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double High { get; set; }
 
         /// <summary>
-        /// Gets or sets the mode of the Triangular Distribution.
+        /// Gets or sets the mode of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Mode { get; set; }
     }
@@ -311,17 +311,17 @@
     public class LognormalBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the lower bound of the Lognormal Distribution.
+        /// Gets or sets the lower bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Low { get; set; }
 
         /// <summary>
-        /// Gets or sets the upper bound of the Lognormal Distribution.
+        /// Gets or sets the upper bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Scale { get; set; }
 
         /// <summary>
-        /// Gets or sets the shape of the Lognormal Distribution.
+        /// Gets or sets the shape of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Shape { get; set; }
     }
@@ -333,22 +333,22 @@
     public class BetaBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the lower bound of the Beta Distribution.
+        /// Gets or sets the lower bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Low { get; set; }
 
         /// <summary>
-        /// Gets or sets the upper bound of the Beta Distribution.
+        /// Gets or sets the upper bound of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double High { get; set; }
 
         /// <summary>
-        /// Gets or sets the Alpha value of the Beta Distribution.
+        /// Gets or sets the Alpha value of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Shape1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the Beta value of the Beta Distribution.
+        /// Gets or sets the Beta value of the <see cref="Simphony.Mathematics"/> Distribution.
         /// </summary>
         required public double Shape2 { get; set; }
     }
@@ -360,12 +360,12 @@
     public class NormalDistBlock : DistributionBlock
     {
         /// <summary>
-        /// Gets or sets the mean value of the Normal Distribution.
+        /// Gets or sets the mean value of the <see cref="Simphony.Mathematics.Normal"/> Distribution.
         /// </summary>
         required public double Mean { get; set; }
 
         /// <summary>
-        /// Gets or sets the variance value of the Normal Distribution.
+        /// Gets or sets the variance value of the <see cref="Simphony.Mathematics.Normal"/> Distribution.
         /// </summary>
         required public double Variance { get; set; }
     }
@@ -377,23 +377,23 @@
     public class ResourceBlock
     {
         /// <summary>
-        /// Gets or sets the type of the resource block.
+        /// Gets or sets the type of the <see cref="ResourceBlock"/>.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         required public ResourceType Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of units of the resource block.
+        /// Gets or sets the number of units of the <see cref="ResourceBlock"/>.
         /// </summary>
         required public int NoOfUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the description of the resource block.
+        /// Gets or sets the description of the <see cref="ResourceBlock"/>.
         /// </summary>
         required public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="CostBlock"/> of the resource block.
+        /// Gets or sets the list of <see cref="CostBlock"/> of the <see cref="ResourceBlock"/>.
         /// </summary>
         public List<CostBlock>? Cost { get; set; }
     }
@@ -405,13 +405,13 @@
     public class CostBlock
     {
         /// <summary>
-        /// Gets or sets the type of the resource cost block.
+        /// Gets or sets the type of the <see cref="CostBlock"/>.
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         required public ResourceCostType Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the resource cost block.
+        /// Gets or sets the value of the <see cref="CostBlock"/>.
         /// </summary>
         required public double Value { get; set; }
     }
