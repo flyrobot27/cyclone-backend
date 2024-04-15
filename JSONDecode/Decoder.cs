@@ -157,17 +157,9 @@
                 case CycloneNetworkType.QUEUE:
                     QueueBlock queueBlock = (QueueBlock)block;
                     queueBlock.NumberToBeGenerated.ExceptionIfNegative(nameof(queueBlock.NumberToBeGenerated), "Number to be generated cannot be negative");
-                    var initialLength = 0;
-                    if (queueBlock.ResourceInput != null)
-                    {
-                        initialLength = queueBlock.ResourceInput.NoOfUnit;
-                        if (queueBlock.ResourceInput.Cost?.Count > 0)
-                        {
-                            throw new NotImplementedException();
-                        }
-                    }
-
+                    int initialLength = GetQueueInitialLength(queueBlock);
                     return new Queue(queueBlock.Label.ToString(), queueBlock.Description, initialLength: initialLength, multiplyByValue: queueBlock.NumberToBeGenerated);
+                
                 case CycloneNetworkType.NORMAL:
                     NormalNetworkBlock normalNetworkBlock = (NormalNetworkBlock)block;
                     Distribution duration = GetDistribution(normalNetworkBlock.Set.Distribution);
@@ -185,6 +177,23 @@
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        private static int GetQueueInitialLength(QueueBlock queueBlock)
+        {
+            var initialLength = 0;
+            if (queueBlock.ResourceInput != null)
+            {
+                initialLength = queueBlock.ResourceInput.NoOfUnit;
+
+                // TEMP: Cost is not implemented
+                if (queueBlock.ResourceInput.Cost?.Count > 0)
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            return initialLength;
         }
     }
 }
