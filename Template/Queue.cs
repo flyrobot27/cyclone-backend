@@ -1,10 +1,11 @@
 ﻿namespace CYCLONE.Template
 {
-	using CYCLONE.Template.Model.Element;
-	using Simphony;
-	using Simphony.Simulation;
+    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Types;
+    using Simphony;
+    using Simphony.Simulation;
 
-	public class Queue : ElementBase, IElement
+    public class Queue : ElementBase, IElement
 	{
 		private static readonly IList<Combi> CombiList = [];
 		private readonly int InitialLengthValue = 0;

@@ -2,6 +2,7 @@
 {
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Template.Model.Exception;
+    using CYCLONE.Types;
     using Simphony.Mathematics;
     using Simphony.Simulation;
     using System.Collections.Generic;

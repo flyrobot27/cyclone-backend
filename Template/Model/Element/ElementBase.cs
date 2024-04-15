@@ -1,13 +1,14 @@
 ﻿namespace CYCLONE.Template.Model.Element
 {
-	using Simphony;
-	using Simphony.Simulation;
-	using System.ComponentModel;
-	using System.Diagnostics;
-	using System.Text;
-	using CYCLONE.Template.Model.Exception;
+    using Simphony;
+    using Simphony.Simulation;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Text;
+    using CYCLONE.Template.Model.Exception;
+    using CYCLONE.Types;
 
-	public abstract class ElementBase(string label, string? description, NetworkType type): IElement
+    public abstract class ElementBase(string label, string? description, NetworkType type): IElement
 	{
 		private readonly List<WaitingFile> waitingFiles = [];
 		private readonly List<Statistic> statistics = [];

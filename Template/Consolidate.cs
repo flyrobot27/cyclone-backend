@@ -1,11 +1,12 @@
 ﻿namespace CYCLONE.Template
 {
-	using CYCLONE.Template.Model.Element;
-	using Simphony;
-	using Simphony.Simulation;
-	using System.Collections.Generic;
+    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Types;
+    using Simphony;
+    using Simphony.Simulation;
+    using System.Collections.Generic;
 
-	public class Consolidate(string label, string? description, IList<IElement> followers, int DivideByValue = 1, int MultiplyByValue = 1) : 
+    public class Consolidate(string label, string? description, IList<IElement> followers, int DivideByValue = 1, int MultiplyByValue = 1) : 
 		ElementFunction(label, description, followers, NetworkType.FUNCTION_CONSOLIDATE)
 	{
 		private int InputCount = 0;

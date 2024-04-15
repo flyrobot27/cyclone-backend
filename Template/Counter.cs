@@ -1,10 +1,11 @@
 ﻿namespace CYCLONE.Template
 {
-	using CYCLONE.Template.Model.Element;
-	using Simphony.ComponentModel;
-	using Simphony.Simulation;
+    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Types;
+    using Simphony.ComponentModel;
+    using Simphony.Simulation;
 
-	public class Counter : ElementFunction
+    public class Counter : ElementFunction
 	{
 		private bool seenNone;
 

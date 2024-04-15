@@ -1,8 +1,9 @@
 ﻿namespace CYCLONE.Template.Model.Element
 {
-	using Simphony.Simulation;
+    using CYCLONE.Types;
+    using Simphony.Simulation;
 
-	public class ElementFunction(string label, string? description, IList<IElement> followers, NetworkType type) : ElementBase(label, description, type), IElement
+    public class ElementFunction(string label, string? description, IList<IElement> followers, NetworkType type) : ElementBase(label, description, type), IElement
 	{
 		protected IList<IElement> Followers = followers;
 

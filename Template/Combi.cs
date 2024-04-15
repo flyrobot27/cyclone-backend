@@ -1,10 +1,11 @@
 ﻿namespace CYCLONE.Template
 {
-	using CYCLONE.Template.Model.Element;
-	using Simphony.Mathematics;
-	using Simphony.Simulation;
+    using CYCLONE.Template.Model.Element;
+    using CYCLONE.Types;
+    using Simphony.Mathematics;
+    using Simphony.Simulation;
 
-	public class Combi(string id, string description, Distribution duration, IList<IElement> followers, IList<Queue> preceders) : 
+    public class Combi(string id, string description, Distribution duration, IList<IElement> followers, IList<Queue> preceders) : 
 		Normal(id, description, duration, followers, NetworkType.COMBI)
 	{
 		private readonly IList<Queue> QueueList = preceders;

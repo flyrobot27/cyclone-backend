@@ -1,5 +1,6 @@
 ﻿namespace CYCLONE.Template.Model.Element
 {
+    using CYCLONE.Types;
     using Simphony.Simulation;
 
     public interface IElement
