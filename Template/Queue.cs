@@ -14,8 +14,9 @@
         private static readonly IList<Combi> CombiList = [];
         private static bool scanTriggered = false;
 
-        private readonly int initialLengthValue = 0;
+        private readonly int initialLengthValue;
         private readonly WaitingFile innerQueue = new ();
+        private readonly int multiplyByValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Queue"/> class.
@@ -23,13 +24,15 @@
         /// <param name="label">The unique label of the queue. Must be unique across all elements.</param>
         /// <param name="description">The description of the queue.</param>
         /// <param name="initialLength">The initial length of the queue.</param>
-        public Queue(string label, string? description, int initialLength = 0)
+        /// <param name="multiplyByValue">The values to multiply the number of entities by.</param>
+        public Queue(string label, string? description, int initialLength = 0, int multiplyByValue = 1)
             : base(label, description, CycloneNetworkType.QUEUE)
         {
             initialLength.ExceptionIfNegative(nameof(initialLength));
             this.AddWaitingFile(this.innerQueue);
             this.AddStatistics(this.PercentNonempty);
 
+            this.multiplyByValue = multiplyByValue;
             this.initialLengthValue = initialLength;
         }
 
@@ -100,7 +103,12 @@
 
             if (!scanTriggered)
             {
-                this.Engine.ScheduleEvent(new Entity(), new Action<Entity>(Scan), 0);
+                // Multiply the number of entities by the value
+                for (var outputCount = 1; outputCount <= this.multiplyByValue; outputCount++)
+                {
+                    this.Engine.ScheduleEvent(new Entity(), new Action<Entity>(Scan), 0);
+                }
+
                 scanTriggered = true;
             }
         }
