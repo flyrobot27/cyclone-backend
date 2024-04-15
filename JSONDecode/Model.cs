@@ -1,7 +1,6 @@
 ﻿namespace CYCLONE.JSONDecode
 {
 	using System.Text.Json.Serialization;
-	using static CYCLONE.JSONDecode.NormalDistBlock;
 
 	public class Model
 	{
