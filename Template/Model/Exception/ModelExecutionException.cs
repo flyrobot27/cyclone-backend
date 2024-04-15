@@ -31,7 +31,7 @@
         public ModelExecutionException(Exception innerException, object context)
             : base(null, innerException)
         {
-            Context = context;
+            this.Context = context;
         }
 
         /// <summary>
