@@ -123,6 +123,7 @@
 	{
 		public required double Mean { get; set; }
 		public required double Variance { get; set; }
+	}
 
 	public class ResourceBlock
 	{
