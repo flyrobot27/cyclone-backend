@@ -1,28 +1,39 @@
 ﻿namespace CYCLONE.Template
 {
+    using System.Collections.Generic;
+
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Types;
     using Simphony;
     using Simphony.Simulation;
-    using System.Collections.Generic;
 
-    public class Consolidate(string label, string? description, IList<IElement> followers, int DivideByValue = 1, int MultiplyByValue = 1) :
-        ElementFunction(label, description, followers, NetworkType.FUNCTION_CONSOLIDATE)
+    /// <summary>
+    /// Represents a Consolidate element in the CYCLONE model.
+    /// </summary>
+    /// <param name="label">The label of the element. Must be unique across all elements.</param>
+    /// <param name="description">The description of the element.</param>
+    /// <param name="followers">The elements following the Consolidate.</param>
+    /// <param name="divideByValue">The values to divide the number of entities by.</param>
+    /// <param name="multiplyByValue">The values to multiply the number of entities by.</param>
+    public class Consolidate(string label, string? description, IList<IElement> followers, int divideByValue = 1, int multiplyByValue = 1) 
+        : ElementFunction(label, description, followers, NetworkType.FUNCTION_CONSOLIDATE)
     {
-        private int InputCount = 0;
-        private readonly int DivideByValue = DivideByValue;
-        private readonly int MultiplyByValue = MultiplyByValue;
+        private readonly int divideByValue = divideByValue;
+        private readonly int multiplyByValue = multiplyByValue;
 
+        private int inputCount = 0;
+
+        /// <inheritdoc/>
         public override void TransferIn(Entity entity)
         {
             entity.ExceptionIfNull(nameof(entity));
 
             this.WriteDebugMessage(entity, "Arrived at Consolidate");
-            this.InputCount++;
+            this.inputCount++;
 
-            if (this.InputCount == this.DivideByValue)
+            if (this.inputCount == this.divideByValue)
             {
-                for (int outputCount = 1; outputCount <= this.MultiplyByValue; outputCount++)
+                for (int outputCount = 1; outputCount <= this.multiplyByValue; outputCount++)
                 {
                     this.WriteDebugMessage(entity, "Departed Consolidate");
                     if (outputCount == 1)

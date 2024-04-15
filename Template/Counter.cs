@@ -5,26 +5,21 @@
     using Simphony.ComponentModel;
     using Simphony.Simulation;
 
+    /// <summary>
+    /// Represents a Counter element in the CYCLONE model.
+    /// </summary>
     public class Counter : ElementFunction
     {
         private bool seenNone;
 
-        public NumericStatistic FirstTime { get; }
-        public NumericStatistic InterArrivalTime { get; }
-        public NumericStatistic LastCount { get; }
-        public NumericStatistic LastTime { get; }
-        public NumericStatistic Production { get; }
-        public NumericStatistic ProductionRate { get; }
-        public int Limit { get; set; } = 0;
-        public int Step { get; set; } = 1;
-        public int Initial { get; set; } = 0;
-        public int Count { get; private set; }
-
-        public double First { get; private set; } = double.NaN;
-        public double Last { get; private set; } = double.NaN;
-
-        public Counter(string label, string? description, IList<IElement> followers) :
-            base(label, description, followers, NetworkType.FUNCTION_COUNTER)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Counter"/> class.
+        /// </summary>
+        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="description">The description of the element.</param>
+        /// <param name="followers">The elements following the Counter.</param>
+        public Counter(string label, string? description, IList<IElement> followers)
+            : base(label, description, followers, NetworkType.FUNCTION_COUNTER)
         {
             this.FirstTime = new NumericStatistic("FirstTime", false);
             this.InterArrivalTime = new NumericStatistic("InterArrivalTime", NumericStatisticInterpretation.InterarrivalTime);
@@ -36,6 +31,67 @@
             this.AddStatistics(this.FirstTime, this.InterArrivalTime, this.LastCount, this.LastTime, this.Production, this.ProductionRate);
         }
 
+        /// <summary>
+        /// Gets a statistic describing the time at which the first entity was observed.
+        /// </summary>
+        public NumericStatistic FirstTime { get; }
+
+        /// <summary>
+        /// Gets a statistic describing the time between entities arriving at the element.
+        /// </summary>
+        public NumericStatistic InterArrivalTime { get; }
+
+        /// <summary>
+        /// Gets a statistic describing the count when the most recent entity was observed.
+        /// </summary>
+        public NumericStatistic LastCount { get; }
+
+        /// <summary>
+        /// Gets a statistic describing the time at which the most recent entity was observed.
+        /// </summary>
+        public NumericStatistic LastTime { get; }
+
+        /// <summary>
+        /// Gets a statistic describing the overall production.
+        /// </summary>
+        public NumericStatistic Production { get; }
+
+        /// <summary>
+        /// Gets a statistic describing the ratio of the count and simulation time.
+        /// </summary>
+        public NumericStatistic ProductionRate { get; }
+
+        /// <summary>
+        /// Gets or sets the limit of the counter. If the limit is reached, the simulation will halt.
+        /// </summary>
+        public int Limit { get; set; } = 0;
+
+        /// <summary>
+        /// Gets or sets the step of the counter.
+        /// </summary>
+        public int Step { get; set; } = 1;
+
+        /// <summary>
+        /// Gets or sets the initial count of the counter.
+        /// </summary>
+        public int Initial { get; set; } = 0;
+
+        /// <summary>
+        /// Gets the current count.
+        /// </summary>
+        public int Count { get; private set; }
+
+        /// <summary>
+        /// Gets the time at which the first entity was observed.
+        /// </summary>
+        public double First { get; private set; } = double.NaN;
+
+        /// <summary>
+        /// Gets the time at which the most recent entity was observed.
+        /// </summary>
+        public double Last { get; private set; } = double.NaN;
+
+        /// <inheritdoc/>
         public override void InitializeRun(int runIndex)
         {
             this.Count = this.Initial;
@@ -48,6 +104,7 @@
             base.InitializeRun(runIndex);
         }
 
+        /// <inheritdoc/>
         public override void FinalizeRun(int runIndex)
         {
             this.Engine.CollectStatistic(this.LastCount, this.Count);
@@ -55,6 +112,7 @@
             base.FinalizeRun(runIndex);
         }
 
+        /// <inheritdoc/>
         public override void TransferIn(Entity entity)
         {
             this.WriteDebugMessage(entity, "Arrived at Counter");

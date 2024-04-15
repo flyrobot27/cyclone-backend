@@ -1,31 +1,32 @@
 ﻿namespace CYCLONE.Template
 {
+    using System.Collections.Generic;
+
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Template.Model.Exception;
     using CYCLONE.Types;
     using Simphony.Mathematics;
     using Simphony.Simulation;
-    using System.Collections.Generic;
 
     public class Normal : ElementBase, IElement
     {
-        protected double LastTime;
-        protected bool FirstEntity = false;
+        protected double lastTime;
+        protected bool firstEntity = false;
         protected readonly Distribution Duration;
         protected readonly IList<IElement> Followers;
 
         public NumericStatistic InterArrivalTime = new("InterArrivalTime", false);
 
-        public Normal(string label, string description, Distribution duration, IList<IElement> followers) :
-            base(label, description, NetworkType.NORMAL)
+        public Normal(string label, string description, Distribution duration, IList<IElement> followers)
+            : base(label, description, NetworkType.NORMAL)
         {
             this.AddStatistics(this.InterArrivalTime);
             this.Duration = duration;
             this.Followers = followers;
         }
 
-        protected Normal(string label, string description, Distribution duration, IList<IElement> followers, NetworkType inheritType) :
-            base(label, description, inheritType)
+        protected Normal(string label, string description, Distribution duration, IList<IElement> followers, NetworkType inheritType)
+            : base(label, description, inheritType)
         {
             this.AddStatistics(this.InterArrivalTime);
             this.Duration = duration;
@@ -35,22 +36,22 @@
         public override void InitializeRun(int runIndex)
         {
             base.InitializeRun(runIndex);
-            this.LastTime = double.NaN;
-            this.FirstEntity = true;
+            this.lastTime = double.NaN;
+            this.firstEntity = true;
         }
 
         public override void TransferIn(Entity entity)
         {
             this.WriteDebugMessage(entity, "Arrived");
-            if (!this.FirstEntity)
+            if (!this.firstEntity)
             {
-                this.Engine.CollectStatistic(this.InterArrivalTime, this.Engine.TimeNow - this.LastTime);
+                this.Engine.CollectStatistic(this.InterArrivalTime, this.Engine.TimeNow - this.lastTime);
             }
             else
             {
-                this.FirstEntity = false;
+                this.firstEntity = false;
             }
-            this.LastTime = this.Engine.TimeNow;
+            this.lastTime = this.Engine.TimeNow;
 
             // transfer out to follower
             try
