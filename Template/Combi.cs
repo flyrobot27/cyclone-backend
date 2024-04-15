@@ -2,7 +2,7 @@
 {
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Types;
-    using Simphony;
+
     using Simphony.Mathematics;
     using Simphony.Simulation;
 

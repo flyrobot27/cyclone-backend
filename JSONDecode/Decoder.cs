@@ -1,9 +1,12 @@
 ﻿namespace CYCLONE.JSONDecode
 {
     using System.Text.Json;
+
+    using CYCLONE.JSONDecode.Converters;
     using CYCLONE.Template;
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Types;
+
     using Simphony;
     using Simphony.Mathematics;
     using Simphony.Simulation;
@@ -28,7 +31,11 @@
             {
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true,
+                IncludeFields = true,
             };
+            deserializeOptions.Converters.Add(new NetworkBlockConverter());
+            deserializeOptions.Converters.Add(new DurationBlockConverter());
+            deserializeOptions.Converters.Add(new DistributionBlockConverter());
             var decoded = JsonSerializer.Deserialize<ModelBlock>(JSONBody, deserializeOptions);
             if (decoded != null)
             {
@@ -66,6 +73,7 @@
             foreach (NetworkBlock block in this.result.NetworkInput)
             {
                 var initializedBlock = InitializeBlock(block);
+                Console.WriteLine(initializedBlock.GetType());
             }
 
             return scenario;
@@ -147,6 +155,7 @@
 
         private static CycloneElementBase InitializeBlock(NetworkBlock block)
         {
+            Console.WriteLine(block.GetType());
             switch (block.Type)
             {
                 case CycloneNetworkType.COMBI:
