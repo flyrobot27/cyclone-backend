@@ -12,12 +12,11 @@
     /// <summary>
     /// Base class for all elements in the model.
     /// </summary>
-    /// <param name="label">The label of the element. Must be unique across all elements.</param>
-    /// <param name="description">The description of the element.</param>
-    /// <param name="type">The Network Type of the element.</param>
-    public abstract class ElementBase(string label, string? description, NetworkType type)
+    public abstract class ElementBase
         : IElement
     {
+        private static readonly List<string> ExistingLabels = [];
+
         private readonly List<WaitingFile> waitingFiles = [];
         private readonly List<Statistic> statistics = [];
         private readonly List<Resource> resources = [];
@@ -25,19 +24,39 @@
         private bool isInitialized = false;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ElementBase"/> class.
+        /// </summary>
+        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="description">The description of the element.</param>
+        /// <param name="type">The Network Type of the element.</param>
+        public ElementBase(string label, string? description, NetworkType type)
+        {
+            this.Description = description;
+            
+            if (ExistingLabels.Contains(label))
+            {
+                throw new InvalidOperationException($"Label {label} already exists");
+            }
+
+            ExistingLabels.Add(label);
+            this.Label = label;
+            this.NetworkType = type;
+        }
+
+        /// <summary>
         /// Gets the description of the element.
         /// </summary>
-        public string? Description { get; } = description;
+        public string? Description { get; }
 
         /// <summary>
         /// Gets the label of the element.
         /// </summary>
-        public string Label { get; } = label;
+        public string Label { get; }
 
         /// <summary>
         /// Gets the Network Type of the element.
         /// </summary>
-        public NetworkType NetworkType { get; } = type;
+        public NetworkType NetworkType { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether debugging is enabled.
