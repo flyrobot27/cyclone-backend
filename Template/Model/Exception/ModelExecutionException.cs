@@ -1,7 +1,6 @@
 ﻿namespace CYCLONE.Template.Model.Exception
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// An exception indicating that an error occurred when executing a simulation model.
