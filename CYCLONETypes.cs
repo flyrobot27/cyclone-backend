@@ -14,10 +14,21 @@
 		FUNCTION_COUNTER
 	}
 
+	public enum ResourceType
+	{
+		RESOURCE
+	}
+
 	public enum DurationType
 	{
 		STATIONARY,
 		NST
+	}
+
+	public enum NSTCategory
+	{
+		FIRST,
+		SECOND,
 	}
 
 	public enum DistributionType
@@ -37,5 +48,11 @@
 		REF_COMBI,
 		REF_NORMAL,
 		REF_FUNCTION
+	}
+
+	public enum ResourceCostType
+	{
+		VC,
+		FC
 	}
 }

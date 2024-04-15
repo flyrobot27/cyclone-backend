@@ -9,8 +9,8 @@
 		ElementFunction(label, description, followers, NetworkType.FUNCTION_CONSOLIDATE)
 	{
 		private int InputCount = 0;
-		private int DivideByValue = DivideByValue;
-		private int MultiplyByValue = MultiplyByValue;
+		private readonly int DivideByValue = DivideByValue;
+		private readonly int MultiplyByValue = MultiplyByValue;
 
 		public override void TransferIn(Entity entity)
 		{
