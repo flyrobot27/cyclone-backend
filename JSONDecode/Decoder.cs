@@ -106,47 +106,30 @@
                 
                 case DistributionType.TRIANGULAR:
                     var bTri = (TriangularBlock)block;
-
-                    if (bTri.Low > bTri.High)
-                    {
-                        throw new ArgumentException("Low cannot be greater than High");
-                    }
-
+                    ThrowHelper.ArgumentAssertion(bTri.Low < bTri.High, "Low cannot be greater than High");
                     bTri.Mode.ExceptionIfOutOfRange(bTri.Low, bTri.High, nameof(bTri.Mode), "Mode must be between Low and High");
+                    dist = new Triangular(bTri.Low, bTri.High, bTri.Mode);
+                    break;
 
-                    // TODO: Implement Triangular distribution
-                    throw new NotImplementedException();
-                
                 case DistributionType.UNIFORM:
                     var bUni = (UniformBlock)block;
-
-                    if (bUni.Low > bUni.High)
-                    {
-                        throw new ArgumentException("Low cannot be greater than High");
-                    }
-
-                    // TODO: Implement Uniform distribution
-                    throw new NotImplementedException();
+                    ThrowHelper.ArgumentAssertion(bUni.Low < bUni.High, "Low cannot be greater than High");
+                    dist = new Uniform(bUni.Low, bUni.High);
+                    break;
                 
                 case DistributionType.LOGNORMAL:
                     var bLog = (LognormalBlock)block;
                     bLog.Shape.ExceptionIfNegative(nameof(bLog.Shape), "Shape cannot be negative");
-
-                    // TODO: Implement Lognormal distribution
-                    throw new NotImplementedException();
+                    dist = new LogNormal(bLog.Scale, bLog.Shape);
+                    break;
                 
                 case DistributionType.BETA:
                     var bBet = (BetaBlock)block;
                     bBet.Shape1.ExceptionIfNegative(nameof(bBet.Shape1), "Shape1 cannot be negative");
                     bBet.Shape2.ExceptionIfNegative(nameof(bBet.Shape2), "Shape2 cannot be negative");
-
-                    if (bBet.Low > bBet.High)
-                    {
-                        throw new ArgumentException("Low cannot be greater than High");
-                    }
-
-                    //TODO: Implement Beta distribution
-                    throw new NotImplementedException();
+                    ThrowHelper.ArgumentAssertion(bBet.Low < bBet.High, "Low cannot be greater than High");
+                    dist = new Beta(bBet.Shape1, bBet.Shape2, bBet.Low, bBet.High);
+                    break;
                 
                 default:
                     throw new NotImplementedException();

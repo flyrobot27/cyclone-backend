@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\CYCLONE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\jsondecode\\modelblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:jsondecode\\modelblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\jsondecode\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:jsondecode\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\jsondecode\\blockinterfaces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:jsondecode\\blockinterfaces.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\model\\element\\elementfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\model\\element\\elementfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ModelBlock.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\JSONDecode\\ModelBlock.cs",
-              "RelativeDocumentMoniker": "JSONDecode\\ModelBlock.cs",
-              "ToolTip": "D:\\CYCLONE\\JSONDecode\\ModelBlock.cs",
-              "RelativeToolTip": "JSONDecode\\ModelBlock.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T00:47:26.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BlockInterfaces.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\JSONDecode\\BlockInterfaces.cs",
-              "RelativeDocumentMoniker": "JSONDecode\\BlockInterfaces.cs",
-              "ToolTip": "D:\\CYCLONE\\JSONDecode\\BlockInterfaces.cs",
-              "RelativeToolTip": "JSONDecode\\BlockInterfaces.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T00:43:43.083Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ElementFunction.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\Template\\Model\\Element\\ElementFunction.cs",
+              "RelativeDocumentMoniker": "Template\\Model\\Element\\ElementFunction.cs",
+              "ToolTip": "D:\\CYCLONE\\Template\\Model\\Element\\ElementFunction.cs",
+              "RelativeToolTip": "Template\\Model\\Element\\ElementFunction.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBsAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T01:00:58.289Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Decoder.cs",
               "DocumentMoniker": "D:\\CYCLONE\\JSONDecode\\Decoder.cs",
               "RelativeDocumentMoniker": "JSONDecode\\Decoder.cs",
               "ToolTip": "D:\\CYCLONE\\JSONDecode\\Decoder.cs",
               "RelativeToolTip": "JSONDecode\\Decoder.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAowE8AAAAkAAAA",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAswIUAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T22:59:10.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Scenario.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\Template\\Scenario.cs",
-              "RelativeDocumentMoniker": "Template\\Scenario.cs",
-              "ToolTip": "D:\\CYCLONE\\Template\\Scenario.cs",
-              "RelativeToolTip": "Template\\Scenario.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAkwHEAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T00:41:10.552Z",
               "EditorCaption": ""
             }
           ]
