@@ -1,7 +1,7 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DurationInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DurationInput
 {
     using System.Text.Json.Serialization;
-    using CYCLONE.JSONDecode.Blocks.DistrbutionBlock;
+    using CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock;
     using CYCLONE.Template.Types;
 
     /// <summary>

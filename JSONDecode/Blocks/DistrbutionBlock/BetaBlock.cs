@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DistrbutionBlock
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock
 {
     /// <summary>
     /// Beta Block class represents the JSON structure of a Beta Distribution.

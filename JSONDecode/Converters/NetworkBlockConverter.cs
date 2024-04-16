@@ -1,9 +1,9 @@
-﻿namespace CYCLONE.JSONDecode.Converters
+﻿namespace CYCLONE.API.JSONDecode.Converters
 {
     using System.Text.Json;
     using System.Text.Json.Serialization;
-    using CYCLONE.JSONDecode.Blocks.NetworkInput;
-    using CYCLONE.JSONDecode.Extension;
+    using CYCLONE.API.JSONDecode.Blocks.NetworkInput;
+    using CYCLONE.API.JSONDecode.Extension;
     using CYCLONE.Template.Types;
 
     /// <summary>

@@ -1,8 +1,8 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.NetworkInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.NetworkInput
 {
-    using CYCLONE.JSONDecode;
-    using CYCLONE.JSONDecode.Blocks;
-    using CYCLONE.JSONDecode.Blocks.DurationInput;
+    using CYCLONE.API.JSONDecode;
+    using CYCLONE.API.JSONDecode.Blocks;
+    using CYCLONE.API.JSONDecode.Blocks.DurationInput;
 
     /// <summary>
     /// Combi block class representing the JSON structure in Network Input.

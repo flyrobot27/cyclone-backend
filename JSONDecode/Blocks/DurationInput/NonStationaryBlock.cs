@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DurationInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DurationInput
 {
     using System.Text.Json.Serialization;
     using CYCLONE.Template.Types;

@@ -1,10 +1,10 @@
-﻿namespace CYCLONE.JSONDecode
+﻿namespace CYCLONE.API.JSONDecode
 {
     using System.Text.Json;
-    using CYCLONE.JSONDecode.Blocks;
-    using CYCLONE.JSONDecode.Blocks.DistrbutionBlock;
-    using CYCLONE.JSONDecode.Blocks.NetworkInput;
-    using CYCLONE.JSONDecode.Converters;
+    using CYCLONE.API.JSONDecode.Blocks;
+    using CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock;
+    using CYCLONE.API.JSONDecode.Blocks.NetworkInput;
+    using CYCLONE.API.JSONDecode.Converters;
     using CYCLONE.Template;
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Element;
@@ -93,19 +93,19 @@
                     var bDet = (DeterministicBlock)block;
                     dist = new Constant(bDet.Constant);
                     break;
-                
+
                 case DistributionType.EXPONENTIAL:
                     var bExp = (ExponentialBlock)block;
                     bExp.Mean.ExceptionIfNegative(nameof(bExp.Mean), "Mean cannot be negative");
                     dist = new Exponential(bExp.Mean);
                     break;
-                
+
                 case DistributionType.NORMAL:
                     var bNor = (NormalDistBlock)block;
                     bNor.Variance.ExceptionIfNegative(nameof(bNor.Variance), "Variance cannot be negative");
                     dist = new Simphony.Mathematics.Normal(bNor.Mean, Math.Sqrt(bNor.Variance));
                     break;
-                
+
                 case DistributionType.TRIANGULAR:
                     var bTri = (TriangularBlock)block;
                     ThrowHelper.ArgumentAssertion(bTri.Low < bTri.High, "Low cannot be greater than High");
@@ -118,13 +118,13 @@
                     ThrowHelper.ArgumentAssertion(bUni.Low < bUni.High, "Low cannot be greater than High");
                     dist = new Uniform(bUni.Low, bUni.High);
                     break;
-                
+
                 case DistributionType.LOGNORMAL:
                     var bLog = (LognormalBlock)block;
                     bLog.Shape.ExceptionIfNegative(nameof(bLog.Shape), "Shape cannot be negative");
                     dist = new LogNormal(bLog.Scale, bLog.Shape);
                     break;
-                
+
                 case DistributionType.BETA:
                     var bBet = (BetaBlock)block;
                     bBet.Shape1.ExceptionIfNegative(nameof(bBet.Shape1), "Shape1 cannot be negative");
@@ -132,7 +132,7 @@
                     ThrowHelper.ArgumentAssertion(bBet.Low < bBet.High, "Low cannot be greater than High");
                     dist = new Beta(bBet.Shape1, bBet.Shape2, bBet.Low, bBet.High);
                     break;
-                
+
                 default:
                     throw new NotImplementedException();
             }
@@ -148,13 +148,13 @@
                     CombiBlock combiBlock = (CombiBlock)block;
                     Distribution set = GetDistribution(combiBlock.Set.Distribution);
                     return new Combi(combiBlock.Label.ToString(), combiBlock.Description, set);
-                
+
                 case CycloneNetworkType.QUEUE:
                     QueueBlock queueBlock = (QueueBlock)block;
                     queueBlock.NumberToBeGenerated.ExceptionIfNegative(nameof(queueBlock.NumberToBeGenerated), "Number to be generated cannot be negative");
                     int initialLength = GetQueueInitialLength(queueBlock);
                     return new Queue(queueBlock.Label.ToString(), queueBlock.Description, initialLength: initialLength, multiplyByValue: Math.Max(1, queueBlock.NumberToBeGenerated));
-                
+
                 case CycloneNetworkType.NORMAL:
                     NormalNetworkBlock normalNetworkBlock = (NormalNetworkBlock)block;
                     Distribution duration = GetDistribution(normalNetworkBlock.Set.Distribution);
@@ -164,11 +164,11 @@
                     FunctionConsolidateBlock functionConsolidateBlock = (FunctionConsolidateBlock)block;
                     functionConsolidateBlock.NumberToConsolidate.ExceptionIfNegative(nameof(functionConsolidateBlock.NumberToConsolidate), "Number to consolidate cannot be negative");
                     return new Consolidate(functionConsolidateBlock.Label.ToString(), functionConsolidateBlock.Description, divideByValue: functionConsolidateBlock.NumberToConsolidate);
-                
+
                 case CycloneNetworkType.FUNCTION_COUNTER:
                     FunctionCounterBlock functionCounterBlock = (FunctionCounterBlock)block;
                     return new Counter(functionCounterBlock.Label.ToString(), functionCounterBlock.Description);
-                
+
                 default:
                     throw new NotImplementedException();
             }
@@ -266,14 +266,14 @@
                     {
                         throw new JsonException(errorMessage);
                     }
-                    
+
                     break;
                 case CycloneNetworkType.QUEUE:
                     if (reference.Type != ReferenceType.REF_QUEUE)
                     {
                         throw new JsonException(errorMessage);
                     }
-                    
+
                     break;
 
                 case CycloneNetworkType.NORMAL:

@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.NetworkInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.NetworkInput
 {
     using System.Text.Json.Serialization;
     using CYCLONE.Template.Types;

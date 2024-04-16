@@ -1,6 +1,6 @@
-﻿namespace CYCLONE.JSONDecode
+﻿namespace CYCLONE.API.JSONDecode
 {
-    using CYCLONE.JSONDecode.Blocks;
+    using CYCLONE.API.JSONDecode.Blocks;
 
     /// <summary>
     /// Interface for blocks that have followers.

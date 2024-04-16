@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Extension
+﻿namespace CYCLONE.API.JSONDecode.Extension
 {
     using System.Text.Json;
 
@@ -20,7 +20,7 @@
                 .EnumerateObject()
                 .FirstOrDefault(p => string.Compare(p.Name, propertyName, StringComparison.OrdinalIgnoreCase) == 0);
 
-            if (object.Equals(property, default(JsonProperty)))
+            if (Equals(property, default(JsonProperty)))
             {
                 throw new KeyNotFoundException("Cannot find key in json: " + propertyName);
             }

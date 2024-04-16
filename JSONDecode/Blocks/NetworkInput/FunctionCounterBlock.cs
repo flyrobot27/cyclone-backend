@@ -1,7 +1,7 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.NetworkInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.NetworkInput
 {
-    using CYCLONE.JSONDecode;
-    using CYCLONE.JSONDecode.Blocks;
+    using CYCLONE.API.JSONDecode;
+    using CYCLONE.API.JSONDecode.Blocks;
 
     /// <summary>
     /// Function Counter block class representing the JSON structure in Network Input.

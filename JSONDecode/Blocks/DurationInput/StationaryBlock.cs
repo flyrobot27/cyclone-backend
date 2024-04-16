@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DurationInput
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DurationInput
 {
     /// <summary>
     /// Stationary block class representing the JSON structure for Duration Input.

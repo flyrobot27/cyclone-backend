@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DistrbutionBlock
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock
 {
     /// <summary>
     /// Normal Distribution Block class represents the JSON structure of a Normal Distribution.

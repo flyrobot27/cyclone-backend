@@ -1,4 +1,4 @@
-﻿namespace CYCLONE.JSONDecode.Blocks.DistrbutionBlock
+﻿namespace CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock
 {
     using System.Text.Json.Serialization;
     using CYCLONE.Template.Types;
