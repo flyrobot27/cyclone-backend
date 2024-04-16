@@ -32,12 +32,15 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.NamingRules", "SA1313:Parameter names should begin with lower-case letter", Justification = "JSON is a term that is written this way")]
         public Decoder(string JSONBody)
         {
+            // The Json Serializer Option will only be used here. It is safe to surpress the warning.
+#pragma warning disable CA1869
             var deserializeOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true,
                 IncludeFields = true,
             };
+#pragma warning restore CA1869
             deserializeOptions.Converters.Add(new NetworkBlockConverter());
             deserializeOptions.Converters.Add(new DurationBlockConverter());
             deserializeOptions.Converters.Add(new DistributionBlockConverter());
