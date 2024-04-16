@@ -19,6 +19,7 @@
         private readonly double length;
         private readonly int numberOfRuns;
         private readonly int seed;
+        private readonly bool debug = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scenario"/> class.
@@ -27,7 +28,8 @@
         /// <param name="length">Maximum execution time of the model. If no limit is desired, set it to 0.</param>
         /// <param name="numberOfRuns">Number of simulations to run for Monte-Carlo simulation.</param>
         /// <param name="seed">Set randomization seed. Non-zero if reproducability is desired. 0 if fully randomize is desired.</param>
-        public Scenario(DiscreteEventEngine engine, double length, int numberOfRuns = 1, int seed = 0)
+        /// <param name="debug">Set to true to enable debug mode.</param>
+        public Scenario(DiscreteEventEngine engine, double length, int numberOfRuns = 1, int seed = 0, bool debug = false)
         {
             engine.ExceptionIfNull(nameof(engine));
             length.ExceptionIfNegative(nameof(length));
@@ -38,6 +40,7 @@
             this.length = length;
             this.numberOfRuns = numberOfRuns;
             this.seed = seed;
+            this.debug = debug;
         }
 
         /// <inheritdoc/>
@@ -86,6 +89,7 @@
             foreach (var element in this.elements)
             {
                 element.SetDiscreteEventEngine(this.engine);
+                element.Debug = this.debug;
                 element.InitializeRun(runIndex);
             }
 

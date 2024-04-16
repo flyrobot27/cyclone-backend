@@ -15,6 +15,11 @@
         T ElementType { get; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether debugging is enabled.
+        /// </summary>
+        bool Debug { get; set; }
+
+        /// <summary>
         /// Abstract method that defines the behavior when an entity is transferred in.
         /// </summary>
         /// <param name="entity">The entity to be transferred in.</param>

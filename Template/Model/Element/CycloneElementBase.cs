@@ -58,9 +58,7 @@
         /// </summary>
         public CycloneNetworkType ElementType { get; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether debugging is enabled.
-        /// </summary>
+        /// <inheritdoc/>
         public bool Debug { get; set; } = false;
 
         /// <summary>
@@ -153,6 +151,7 @@
                 }
 
                 Trace.WriteLine(builder, "Debug");
+                Console.WriteLine(builder.ToString());
             }
         }
 

@@ -43,6 +43,15 @@
         public NumericStatistic PercentNonempty { get; } = new ("PercentNonempty", true);
 
         /// <summary>
+        /// Add a combi to the list of combis. Shared for all instances of the <see cref="Queue"/>.
+        /// </summary>
+        /// <param name="combi">The combi element.</param>
+        public static void AddCombi(Combi combi)
+        {
+            CombiList.Add(combi);
+        }
+
+        /// <summary>
         /// Get the current length of the queue.
         /// </summary>
         /// <returns>An integer representing the length.</returns>
@@ -70,15 +79,6 @@
         public bool NonZeroInitialLength()
         {
             return this.initialLengthValue > 0;
-        }
-        
-        /// <summary>
-        /// Add a combi to the list of combis. Shared for all instances of the <see cref="Queue"/>.
-        /// </summary>
-        /// <param name="combi">The combi element.</param>
-        public void AddCombi(Combi combi)
-        {
-            CombiList.Add(combi);
         }
 
         /// <inheritdoc/>

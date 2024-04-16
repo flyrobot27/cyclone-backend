@@ -66,12 +66,14 @@
         /// <summary>
         /// Converts the JSON to a <see cref="Scenario"/>.
         /// </summary>
+        /// <param name="engine">The <see cref="DiscreteEventEngine"/></param>
+        /// <param name="debug">Whether to run in debug mode.</param>
         /// <returns>The Scenario object.</returns>
-        public Scenario ToScenario(DiscreteEventEngine engine)
+        public Scenario ToScenario(DiscreteEventEngine engine, bool debug = false)
         {
             var length = this.result.LengthOfRun;
 
-            var scenario = new Scenario(engine: engine, length: length);
+            var scenario = new Scenario(engine: engine, length: length, debug: debug);
 
             this.ParseNetworkInput();
             this.SetBlockFollowersPreceders();
@@ -209,6 +211,12 @@
                 if (initializedBlock is Counter counterBlock)
                 {
                     counterBlock.Limit = this.result.NoOfCycles;
+                }
+
+                // Append to Combi list
+                if (initializedBlock is Combi combiBlock)
+                {
+                    Queue.AddCombi(combiBlock);
                 }
             }
         }
