@@ -3,15 +3,8 @@
   "WorkspaceRootPath": "D:\\CYCLONE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}|..\\CYCLONE.Console.Test\\CYCLONE.ConsoleApp.Test.csproj|d:\\cyclone.console.test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|d:\\cyclone\\jsondecode\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8456E0AA-2E30-4D9A-A696-F44AF163038D}|CYCLONE.csproj|solutionrelative:jsondecode\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CycloneElementBase.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\Template\\Model\\Element\\CycloneElementBase.cs",
-              "RelativeDocumentMoniker": "Template\\Model\\Element\\CycloneElementBase.cs",
-              "ToolTip": "D:\\CYCLONE\\Template\\Model\\Element\\CycloneElementBase.cs",
-              "RelativeToolTip": "Template\\Model\\Element\\CycloneElementBase.cs",
-              "ViewState": "AQIAAHQAAAAAAAAAAAAvwJIAAAAAAAAA",
+              "Title": "Decoder.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\JSONDecode\\Decoder.cs",
+              "RelativeDocumentMoniker": "JSONDecode\\Decoder.cs",
+              "ToolTip": "D:\\CYCLONE\\JSONDecode\\Decoder.cs",
+              "RelativeToolTip": "JSONDecode\\Decoder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIwAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T05:25:29.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Queue.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\Template\\Queue.cs",
-              "RelativeDocumentMoniker": "Template\\Queue.cs",
-              "ToolTip": "D:\\CYCLONE\\Template\\Queue.cs",
-              "RelativeToolTip": "Template\\Queue.cs",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAuwIUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T05:22:51.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\CYCLONE.Console.Test\\Program.cs",
-              "RelativeDocumentMoniker": "..\\CYCLONE.Console.Test\\Program.cs",
-              "ToolTip": "D:\\CYCLONE.Console.Test\\Program.cs",
-              "RelativeToolTip": "..\\CYCLONE.Console.Test\\Program.cs",
-              "ViewState": "AQIAAIwAAAAAAAAAAAAAAKYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T05:10:05.597Z",
+              "WhenOpened": "2024-04-16T05:55:56.674Z",
               "EditorCaption": ""
             }
           ]

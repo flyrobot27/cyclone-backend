@@ -1,5 +1,7 @@
 ﻿namespace CYCLONE.JSONDecode
 {
+    using CYCLONE.JSONDecode.Blocks;
+
     /// <summary>
     /// Interface for blocks that have followers.
     /// </summary>
