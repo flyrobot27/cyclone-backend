@@ -22,12 +22,21 @@ namespace CYCLONE.API
                 {
                     var decoder = new JSONDecode.Decoder(body);
                     var engine = new DiscreteEventEngine();
-                    var scenario = decoder.ToScenario(engine, debug: true);
+                    var scenario = decoder.ToScenario(engine, debug: false);
 
                     engine.InitializeEngine();
                     var terminationReason = engine.Simulate(scenario);
 
-                    // TODO: Return the results of the simulation
+                    var returnDict = new Dictionary<string, object>
+                    {
+                        {"terminationReason", terminationReason.ToString()},
+                        {"intrinsicResult", scenario.IntrinsicResults},
+                        {"nonIntrinsicResult", scenario.NonIntrinsicResults},
+                        {"counterResult", scenario.CounterResults},
+                        {"waitingFileResult", scenario.WaitingFileResults},
+                    };
+
+                    return Results.Ok(returnDict);
                 }
                 catch (Exception e) when (e is JsonException || e is ArgumentException || e is ModelExecutionException)
                 {
@@ -37,8 +46,6 @@ namespace CYCLONE.API
                 {
                     return Results.Problem("Not implemented");
                 }
-
-                return Results.Ok();
             });
 
             app.Run();
