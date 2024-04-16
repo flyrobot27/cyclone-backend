@@ -40,6 +40,7 @@
             deserializeOptions.Converters.Add(new NetworkBlockConverter());
             deserializeOptions.Converters.Add(new DurationBlockConverter());
             deserializeOptions.Converters.Add(new DistributionBlockConverter());
+            deserializeOptions.Converters.Add(new NumberToStringConverter());
             var decoded = JsonSerializer.Deserialize<ModelBlock>(JSONBody, deserializeOptions);
             if (decoded != null)
             {
@@ -140,7 +141,6 @@
 
         private static CycloneElementBase InitializeBlock(NetworkBlock block)
         {
-            Console.WriteLine(block.GetType());
             switch (block.Type)
             {
                 case CycloneNetworkType.COMBI:
@@ -152,7 +152,7 @@
                     QueueBlock queueBlock = (QueueBlock)block;
                     queueBlock.NumberToBeGenerated.ExceptionIfNegative(nameof(queueBlock.NumberToBeGenerated), "Number to be generated cannot be negative");
                     int initialLength = GetQueueInitialLength(queueBlock);
-                    return new Queue(queueBlock.Label.ToString(), queueBlock.Description, initialLength: initialLength, multiplyByValue: queueBlock.NumberToBeGenerated);
+                    return new Queue(queueBlock.Label.ToString(), queueBlock.Description, initialLength: initialLength, multiplyByValue: Math.Max(1, queueBlock.NumberToBeGenerated));
                 
                 case CycloneNetworkType.NORMAL:
                     NormalNetworkBlock normalNetworkBlock = (NormalNetworkBlock)block;

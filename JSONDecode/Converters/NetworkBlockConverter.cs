@@ -20,7 +20,6 @@
             if (Enum.TryParse(typestr, out CycloneNetworkType type))
             {
                 var rawText = doc.RootElement.GetRawText();
-                Console.WriteLine(rawText);
                 return type switch
                 {
                     CycloneNetworkType.COMBI => JsonSerializer.Deserialize<CombiBlock>(rawText, options),
