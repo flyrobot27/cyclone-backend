@@ -206,6 +206,12 @@
                 {
                     this.blockPreceders[block.Label] = blockWithPreceders;
                 }
+
+                // Set counter limit
+                if (initializedBlock is Counter counterBlock)
+                {
+                    counterBlock.Limit = this.result.NoOfCycles;
+                }
             }
         }
 
