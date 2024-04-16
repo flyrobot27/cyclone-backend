@@ -1,7 +1,9 @@
 ﻿namespace CYCLONE.Template
 {
     using System.Collections.Generic;
+    using System.Xml.Linq;
     using CYCLONE.Template.Interfaces;
+    using CYCLONE.Template.ResultContainers;
     using CYCLONE.Template.Types;
     using Simphony;
     using Simphony.Mathematics;
@@ -41,6 +43,26 @@
             this.debug = debug;
         }
 
+        /// <summary>
+        /// Gets the non-intrinsic results.
+        /// </summary>
+        public Dictionary<string, NonIntrinsicResult> NonIntrinsicResults { get; } = [];
+
+        /// <summary>
+        /// Gets the intrinsic results.
+        /// </summary>
+        public Dictionary<string, IntrinsicResult> IntrinsicResults { get; } = [];
+
+        /// <summary>
+        /// Gets the counter results.
+        /// </summary>
+        public Dictionary<string, CounterResult> CounterResults { get; } = [];
+
+        /// <summary>
+        /// Gets the waiting file results.
+        /// </summary>
+        public Dictionary<string, WaitingFileResult> WaitingFileResults { get; } = [];
+
         /// <inheritdoc/>
         public double AbsoluteError => 1E-5;
 
@@ -79,7 +101,12 @@
                 Console.WriteLine($"Scenario Finished at {this.engine.TimeNow}");
             }
 
-            
+            foreach (var element in this.elements)
+            {
+                this.CollectStatistics(element);
+                this.CollectCounterResult(element);
+                this.CollectWaitingFileResult(element);
+            }
         }
 
         /// <inheritdoc/>
@@ -131,6 +158,72 @@
             }
 
             this.elements.AddRange(elements);
+        }
+
+        private void CollectStatistics(IElement<CycloneNetworkType> element)
+        {
+            if (element is Counter)
+            {
+                return;
+            }
+
+            var statisitcs = element.GetStatistics();
+
+            foreach (var stats in statisitcs)
+            {
+                if (stats is NumericStatistic numericStats)
+                {
+                    var resultString = $"{element.Label} - {element.Description} ({numericStats.Name})";
+                    if (numericStats.IsIntrinsic)
+                    {
+                        this.IntrinsicResults.Add(resultString, new IntrinsicResult(numericStats.Minimum, numericStats.Maximum, numericStats.Mean, numericStats.StandardDeviation, numericStats.Current));
+                    }
+                    else
+                    {
+                        this.NonIntrinsicResults.Add(resultString, new NonIntrinsicResult(numericStats.Minimum, numericStats.Maximum, numericStats.Mean, numericStats.StandardDeviation, numericStats.Observations.Count));
+                    }
+                }
+            }
+        }
+
+        private void CollectCounterResult(IElement<CycloneNetworkType> element)
+        {
+            if (element is not Counter counter)
+            {
+                return;
+            }
+
+            var resultString = $"{element.Label} - {element.Description}";
+
+            var result = new CounterResult(
+                counter.LastCount.Mean, 
+                counter.ProductionRate.Observations[counter.ProductionRate.Observations.Count - 1], 
+                counter.InterArrivalTime.Mean, 
+                counter.FirstTime.Mean, 
+                counter.LastTime.Mean);
+
+            this.CounterResults.Add(resultString, result);
+        }
+
+        private void CollectWaitingFileResult(IElement<CycloneNetworkType> element)
+        {
+            var waitingFiles = element.GetWaitingFiles();
+            foreach ( var waitingFile in waitingFiles )
+            {
+                var fileLength = waitingFile.FileLength;
+                var waitingTime = waitingFile.WaitingTime;
+
+                var resultString = $"{element.Label} - {element.Description}";
+
+                var result = new WaitingFileResult(
+                    fileLength.Mean,
+                    fileLength.StandardDeviation,
+                    fileLength.Maximum,
+                    fileLength.Current,
+                    waitingTime.Mean);
+
+                this.WaitingFileResults.Add(resultString, result);
+            }
         }
     }
 }

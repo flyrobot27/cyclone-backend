@@ -15,6 +15,16 @@
         T ElementType { get; }
 
         /// <summary>
+        /// Gets the label of the element.
+        /// </summary>
+        string Label { get; }
+
+        /// <summary>
+        /// Gets the description of the element.
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether debugging is enabled.
         /// </summary>
         bool Debug { get; set; }

@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CA98A3D-B19A-4811-BEC3-9095C74B921E}|CYCLONE.Console.Test\\CYCLONE.ConsoleApp.Test.csproj|d:\\cyclone\\cyclone.console.test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CA98A3D-B19A-4811-BEC3-9095C74B921E}|CYCLONE.Console.Test\\CYCLONE.ConsoleApp.Test.csproj|solutionrelative:cyclone.console.test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\combi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\combi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\resultcontainers\\intrinsicresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\resultcontainers\\intrinsicresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,19 +26,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CycloneElementBase.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
-              "RelativeDocumentMoniker": "CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
-              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
-              "RelativeToolTip": "CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
-              "ViewState": "AQIAAKUAAAAAAAAAAAAkwLIAAAAAAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Console.Test\\Program.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Console.Test\\Program.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Console.Test\\Program.cs",
+              "RelativeToolTip": "CYCLONE.Console.Test\\Program.cs",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAgwKcAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T18:32:50.129Z",
+              "WhenOpened": "2024-04-16T19:26:52.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Queue.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Queue.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Template\\Queue.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Queue.cs",
+              "RelativeToolTip": "CYCLONE.Template\\Queue.cs",
+              "ViewState": "AQIAAIIAAAAAAAAAAAAYwBEAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T19:01:46.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IntrinsicResult.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\ResultContainers\\IntrinsicResult.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Template\\ResultContainers\\IntrinsicResult.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\ResultContainers\\IntrinsicResult.cs",
+              "RelativeToolTip": "CYCLONE.Template\\ResultContainers\\IntrinsicResult.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T19:01:42.646Z",
               "EditorCaption": ""
             },
             {
@@ -45,22 +75,9 @@
               "RelativeDocumentMoniker": "CYCLONE.Template\\Scenario.cs",
               "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Scenario.cs",
               "RelativeToolTip": "CYCLONE.Template\\Scenario.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAA5wA8AAAAmAAAA",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAkwGUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T18:22:58.029Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Combi.cs",
-              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Combi.cs",
-              "RelativeDocumentMoniker": "CYCLONE.Template\\Combi.cs",
-              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Combi.cs",
-              "RelativeToolTip": "CYCLONE.Template\\Combi.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T18:22:45.206Z",
               "EditorCaption": ""
             }
           ]

@@ -19,8 +19,6 @@
         private double lastTime;
         private bool firstEntity = false;
 
-        protected readonly IList<IElement<CycloneNetworkType>> Followers = [];
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Normal"/> class.
         /// </summary>
@@ -52,6 +50,11 @@
         /// Gets the InterArrivalTime statistic.
         /// </summary>
         public NumericStatistic InterArrivalTime { get; } = new("InterArrivalTime", false);
+        
+        /// <summary>
+        /// Gets the followers of the element.
+        /// </summary>
+        protected IList<IElement<CycloneNetworkType>> Followers { get; } = [];
 
         /// <inheritdoc/>
         public override void InitializeRun(int runIndex)

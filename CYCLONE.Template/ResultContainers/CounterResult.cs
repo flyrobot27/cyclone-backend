@@ -10,12 +10,12 @@
     /// <param name="averageInterArrivalTime">Average inter-arrival time.</param>
     /// <param name="firstArrival">Time of the first arrival.</param>
     /// <param name="lastArrival">Time of the last arrival.</param>
-    public class CounterResult(int finalCount, double productionRate, double averageInterArrivalTime, double firstArrival, double lastArrival)
+    public class CounterResult(double finalCount, double productionRate, double averageInterArrivalTime, double firstArrival, double lastArrival)
     {
         /// <summary>
         /// Gets the final items counted at the counter.
         /// </summary>
-        public int FinalCount { get; } = finalCount;
+        public double FinalCount { get; } = finalCount;
         
         /// <summary>
         /// Gets the steady state rate of production.
