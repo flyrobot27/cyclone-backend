@@ -53,7 +53,7 @@
         /// Add preceding queue(s) to the combi.
         /// </summary>
         /// <param name="elements">The preceding <see cref="Queue"/>.</param>
-        public void AddPreceders(IElement<CycloneNetworkType>[] elements)
+        public void AddPreceders(params IElement<CycloneNetworkType>[] elements)
         {
             foreach (var element in elements)
             {

@@ -11,6 +11,6 @@
         /// Add preceder(s) to the list of preceders.
         /// </summary>
         /// <param name="elements">The preceding element(s).</param>
-        void AddPreceders(IElement<T>[] elements);
+        void AddPreceders(params IElement<T>[] elements);
     }
 }

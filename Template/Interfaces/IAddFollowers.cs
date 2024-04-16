@@ -11,6 +11,6 @@
         /// Add follower(s) to the list of followers.
         /// </summary>
         /// <param name="elements">The following <see cref="IElement"/>.</param>
-        void AddFollowers(IElement<T>[] elements);
+        void AddFollowers(params IElement<T>[] elements);
     }
 }

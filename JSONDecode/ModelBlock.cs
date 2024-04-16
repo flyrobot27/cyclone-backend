@@ -38,12 +38,6 @@
     /// <summary>
     /// Network block class representing the JSON structure Network Input.
     /// </summary>
-    //[JsonPolymorphic(TypeDiscriminatorPropertyName = nameof(Type))]
-    //[JsonDerivedType(typeof(CombiBlock), nameof(CycloneNetworkType.COMBI))]
-    //[JsonDerivedType(typeof(NormalNetworkBlock), nameof(CycloneNetworkType.NORMAL))]
-    //[JsonDerivedType(typeof(QueueBlock), nameof(CycloneNetworkType.QUEUE))]
-    //[JsonDerivedType(typeof(FunctionConsolidateBlock), nameof(CycloneNetworkType.FUNCTION_CONSOLIDATE))]
-    //[JsonDerivedType(typeof(FunctionCounterBlock), nameof(CycloneNetworkType.FUNCTION_COUNTER))]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
     public class NetworkBlock
     {
@@ -56,7 +50,7 @@
         /// <summary>
         /// Gets or sets the label of the <see cref="NetworkBlock"/>.
         /// </summary>
-        required public int Label { get; set; }
+        required public string Label { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the <see cref="NetworkBlock"/>.
@@ -169,7 +163,7 @@
         /// <summary>
         /// Gets or sets the label of the <see cref="NetworkBlock"/> the reference block is referring to.
         /// </summary>
-        required public int Value { get; set; }
+        required public string Value { get; set; }
     }
 
     /// <summary>
@@ -232,14 +226,6 @@
     /// <summary>
     /// Distribution block class representing the JSON structure for a Statistic Distribution.
     /// </summary>
-    //[JsonPolymorphic(TypeDiscriminatorPropertyName = nameof(Type))]
-    //[JsonDerivedType(typeof(DeterministicBlock), nameof(DistributionType.DETERMINISTIC))]
-    //[JsonDerivedType(typeof(ExponentialBlock), nameof(DistributionType.EXPONENTIAL))]
-    //[JsonDerivedType(typeof(UniformBlock), nameof(DistributionType.UNIFORM))]
-    //[JsonDerivedType(typeof(TriangularBlock), nameof(DistributionType.TRIANGULAR))]
-    //[JsonDerivedType(typeof(LognormalBlock), nameof(DistributionType.LOGNORMAL))]
-    //[JsonDerivedType(typeof(BetaBlock), nameof(DistributionType.BETA))]
-    //[JsonDerivedType(typeof(NormalDistBlock), nameof(DistributionType.NORMAL))]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Too many cluttered files otherwise.")]
     public class DistributionBlock
     {

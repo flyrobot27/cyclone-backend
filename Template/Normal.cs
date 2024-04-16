@@ -91,7 +91,7 @@
         }
 
         /// <inheritdoc/>
-        public void AddFollowers(IElement<CycloneNetworkType>[] followers)
+        public void AddFollowers(params IElement<CycloneNetworkType>[] followers)
         {
             if (followers.GetType() == typeof(Combi))
             {

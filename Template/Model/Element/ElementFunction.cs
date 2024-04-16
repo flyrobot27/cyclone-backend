@@ -25,7 +25,7 @@
         }
 
         /// <inheritdoc/>
-        public void AddFollowers(IElement<CycloneNetworkType>[] elements)
+        public void AddFollowers(params IElement<CycloneNetworkType>[] elements)
         {
             foreach (var element in elements)
             {

@@ -3,7 +3,6 @@
     /// <summary>
     /// Interface for blocks that have followers.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1649:File name should match first type name", Justification = "Too many cluttered files otherwise.")]
     public interface IBlockHasFollowers
     {
         /// <summary>

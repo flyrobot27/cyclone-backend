@@ -81,7 +81,7 @@
         {
             this.elements.Count.ExceptionIfNotPositive(
                 nameof(this.elements.Count), 
-                string.Format("No Element has been inserted. Use {0} to insert element into the Scenario.", nameof(this.InsertElement)));
+                string.Format("No Element has been inserted. Use {0} to insert element into the Scenario.", nameof(this.InsertElements)));
 
             foreach (var element in this.elements)
             {
@@ -108,12 +108,12 @@
         }
 
         /// <summary>
-        /// Inserts an element into the scenario.
+        /// Inserts <see cref="IElement{T}"/> into the scenario.
         /// </summary>
-        /// <param name="element">The element to insert.</param>
-        public void InsertElement(IElement<CycloneNetworkType> element)
+        /// <param name="elements">The element to insert.</param>
+        public void InsertElements(params IElement<CycloneNetworkType>[] elements)
         {
-            this.elements.Add(element);
+            this.elements.AddRange(elements);
         }
     }
 }

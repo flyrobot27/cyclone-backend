@@ -4,6 +4,7 @@
 
     using CYCLONE.JSONDecode.Converters;
     using CYCLONE.Template;
+    using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Types;
 
@@ -18,7 +19,9 @@
     {
         private readonly ModelBlock result;
         private readonly string jstring;
-        private readonly List<CycloneElementBase> elements = [];
+        private readonly Dictionary<string, CycloneElementBase> elements = [];
+        private readonly Dictionary<string, IBlockHasFollowers> blockFollowers = [];
+        private readonly Dictionary<string, IBlockHasPreceders> blockPreceders = [];
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Decoder"/> class.
@@ -71,12 +74,10 @@
 
             var scenario = new Scenario(engine: engine, length: length);
 
-            foreach (NetworkBlock block in this.result.NetworkInput)
-            {
-                var initializedBlock = InitializeBlock(block);
-                this.elements.Add(initializedBlock);
-            }
+            this.ParseNetworkInput();
+            this.SetBlockFollowersPreceders();
 
+            scenario.InsertElements(this.elements.Values.ToArray());
             return scenario;
         }
 
@@ -204,6 +205,103 @@
             }
 
             return initialLength;
+        }
+
+        private void ParseNetworkInput()
+        {
+            foreach (NetworkBlock block in this.result.NetworkInput)
+            {
+                var initializedBlock = InitializeBlock(block);
+                this.elements[block.Label] = initializedBlock;
+
+                if (block is IBlockHasFollowers blockWithFollowers)
+                {
+                    this.blockFollowers[block.Label] = blockWithFollowers;
+                }
+
+                if (block is IBlockHasPreceders blockWithPreceders)
+                {
+                    this.blockPreceders[block.Label] = blockWithPreceders;
+                }
+            }
+        }
+
+        private void SetBlockFollowersPreceders()
+        {
+            foreach (var entry in this.elements)
+            {
+                var block = entry.Value;
+                var label = entry.Key;
+
+                if (block is IAddFollowers<CycloneNetworkType> bFollowers)
+                {
+                    // Get the followers list
+                    var followers = this.blockFollowers[label].Followers;
+                    foreach (var follower in followers)
+                    {
+                        var actualBlock = this.GetActualBlockFromReference(follower);
+                        bFollowers.AddFollowers(actualBlock);
+                    }
+                }
+
+                if (block is IAddPreceders<CycloneNetworkType> bPreceders)
+                {
+                    // Get the preceders list
+                    var preceders = this.blockPreceders[label].Preceders;
+                    foreach (var preceder in preceders)
+                    {
+                        var actualBlock = this.GetActualBlockFromReference(preceder);
+                        bPreceders.AddPreceders(actualBlock);
+                    }
+                }
+            }
+        }
+
+        private CycloneElementBase GetActualBlockFromReference(ReferenceBlock reference)
+        {
+            var block = this.elements[reference.Value];
+            var errorMessage = "Reference type does not match block type";
+
+            // Check if type matches reference type
+            switch (block.ElementType)
+            {
+                case CycloneNetworkType.COMBI:
+                    if (reference.Type != ReferenceType.REF_COMBI)
+                    {
+                        throw new JsonException(errorMessage);
+                    }
+                    
+                    break;
+                case CycloneNetworkType.QUEUE:
+                    if (reference.Type != ReferenceType.REF_QUEUE)
+                    {
+                        throw new JsonException(errorMessage);
+                    }
+                    
+                    break;
+
+                case CycloneNetworkType.NORMAL:
+                    if (reference.Type != ReferenceType.REF_NORMAL)
+                    {
+                        throw new JsonException(errorMessage);
+                    }
+
+                    break;
+
+                case CycloneNetworkType.FUNCTION_CONSOLIDATE:
+                case CycloneNetworkType.FUNCTION_COUNTER:
+                    if (reference.Type != ReferenceType.REF_FUNCTION)
+                    {
+                        throw new JsonException(errorMessage);
+                    }
+
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+
+            return block;
         }
     }
 }
