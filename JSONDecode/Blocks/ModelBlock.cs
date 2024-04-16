@@ -2,7 +2,7 @@
 {
     using System.Text.Json.Serialization;
     using CYCLONE.JSONDecode.Blocks.NetworkInput;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Model Block class representing the JSON structure.

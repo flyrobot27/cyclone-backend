@@ -2,7 +2,7 @@
 {
     using System.Text.Json.Serialization;
     using CYCLONE.JSONDecode.Blocks.NetworkInput;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Reference block class representing the JSON structure that is used to reference another <see cref="NetworkBlock"/>.

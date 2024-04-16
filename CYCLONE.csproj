@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CYCLONE.Modelling\CYCLONE.Template.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Simphony.Common">
       <HintPath>..\Core8\Simphony.Common\bin\Release\net8.0\Simphony.Common.dll</HintPath>
     </Reference>

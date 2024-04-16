@@ -8,8 +8,7 @@
     using CYCLONE.Template;
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Element;
-    using CYCLONE.Types;
-
+    using CYCLONE.Template.Types;
     using Simphony;
     using Simphony.Mathematics;
     using Simphony.Simulation;

@@ -1,8 +1,6 @@
 ﻿namespace CYCLONE.JSONDecode.Blocks.NetworkInput
 {
-    using System.Text.Json.Serialization;
     using CYCLONE.JSONDecode.Blocks;
-    using CYCLONE.Types;
 
     /// <summary>
     /// Queue block class representing the JSON structure in Network Input.

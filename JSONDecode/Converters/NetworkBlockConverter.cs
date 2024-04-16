@@ -4,7 +4,7 @@
     using System.Text.Json.Serialization;
     using CYCLONE.JSONDecode.Blocks.NetworkInput;
     using CYCLONE.JSONDecode.Extension;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Converts <see cref="NetworkBlock"/> into appropriate subtypes.

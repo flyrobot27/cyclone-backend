@@ -2,7 +2,7 @@
 {
     using System.Text.Json.Serialization;
     using CYCLONE.JSONDecode.Blocks.DistrbutionBlock;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Duration block class representing the JSON structure for Duration Input.

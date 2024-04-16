@@ -1,7 +1,7 @@
 ﻿namespace CYCLONE.JSONDecode.Blocks.NetworkInput
 {
     using System.Text.Json.Serialization;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Network block class representing the JSON structure Network Input.

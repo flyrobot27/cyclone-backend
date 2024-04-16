@@ -1,7 +1,7 @@
 ﻿namespace CYCLONE.JSONDecode.Blocks.DurationInput
 {
     using System.Text.Json.Serialization;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Non Stationary block class representing the JSON structure for Duration Input.

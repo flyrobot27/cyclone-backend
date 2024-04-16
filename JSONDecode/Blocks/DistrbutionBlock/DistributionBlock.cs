@@ -1,7 +1,7 @@
 ﻿namespace CYCLONE.JSONDecode.Blocks.DistrbutionBlock
 {
     using System.Text.Json.Serialization;
-    using CYCLONE.Types;
+    using CYCLONE.Template.Types;
 
     /// <summary>
     /// Distribution block class representing the JSON structure for a Statistic Distribution.
