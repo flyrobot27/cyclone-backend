@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYCLONE.API", "CYCLONE.API.csproj", "{8456E0AA-2E30-4D9A-A696-F44AF163038D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYCLONE.API", "CYCLONE.API\CYCLONE.API.csproj", "{D803E18F-308E-47B8-BECF-3CD3CFD9D34D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYCLONE.ConsoleApp.Test", "..\CYCLONE.Console.Test\CYCLONE.ConsoleApp.Test.csproj", "{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYCLONE.ConsoleApp.Test", "CYCLONE.Console.Test\CYCLONE.ConsoleApp.Test.csproj", "{0CA98A3D-B19A-4811-BEC3-9095C74B921E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYCLONE.Template", "..\CYCLONE.Modelling\CYCLONE.Template.csproj", "{BFCAFC46-BA62-46A6-85E3-4F97A2A94772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYCLONE.Template", "CYCLONE.Template\CYCLONE.Template.csproj", "{DCB54A9F-74DC-4089-A884-57951B89652F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8456E0AA-2E30-4D9A-A696-F44AF163038D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8456E0AA-2E30-4D9A-A696-F44AF163038D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8456E0AA-2E30-4D9A-A696-F44AF163038D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8456E0AA-2E30-4D9A-A696-F44AF163038D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DEC1E4E-8441-451E-9E28-B4D5A4B51BA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFCAFC46-BA62-46A6-85E3-4F97A2A94772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFCAFC46-BA62-46A6-85E3-4F97A2A94772}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFCAFC46-BA62-46A6-85E3-4F97A2A94772}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFCAFC46-BA62-46A6-85E3-4F97A2A94772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D803E18F-308E-47B8-BECF-3CD3CFD9D34D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D803E18F-308E-47B8-BECF-3CD3CFD9D34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D803E18F-308E-47B8-BECF-3CD3CFD9D34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D803E18F-308E-47B8-BECF-3CD3CFD9D34D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA98A3D-B19A-4811-BEC3-9095C74B921E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA98A3D-B19A-4811-BEC3-9095C74B921E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA98A3D-B19A-4811-BEC3-9095C74B921E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA98A3D-B19A-4811-BEC3-9095C74B921E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB54A9F-74DC-4089-A884-57951B89652F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB54A9F-74DC-4089-A884-57951B89652F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB54A9F-74DC-4089-A884-57951B89652F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB54A9F-74DC-4089-A884-57951B89652F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

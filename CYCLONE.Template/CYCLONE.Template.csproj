@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Simphony.Common">
+      <HintPath>..\Core8\Simphony.Common\bin\Release\net8.0\Simphony.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Simphony.Mathematics">
+      <HintPath>..\Core8\Simphony.Simulation\bin\Release\net8.0\Simphony.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Simphony.Simulation">
+      <HintPath>..\Core8\Simphony.Simulation\bin\Release\net8.0\Simphony.Simulation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
