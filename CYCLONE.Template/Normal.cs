@@ -115,6 +115,7 @@
             {
                 sb.AppendLine($"  {follower.ToString()}");
             }
+
             return sb.ToString();
         }
 

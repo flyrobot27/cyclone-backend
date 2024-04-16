@@ -74,7 +74,12 @@
         /// <inheritdoc/>
         public void FinalizeScenario()
         {
-            // Do nothing
+            if (this.debug)
+            {
+                Console.WriteLine($"Scenario Finished at {this.engine.TimeNow}");
+            }
+
+            
         }
 
         /// <inheritdoc/>
@@ -119,7 +124,8 @@
             {
                 foreach (var element in elements)
                 {
-                    Console.Write(element.ToString());
+                    Console.WriteLine(element.ToString());
+                    Console.WriteLine("=====================================");
                     element.Debug = true;
                 }
             }

@@ -154,10 +154,9 @@
 
                 if (message != null)
                 {
-                    builder.Append(message);
+                    builder.AppendLine(message);
                 }
 
-                builder.Append('\n');
                 Trace.WriteLine(builder, "Debug");
                 Console.WriteLine(builder.ToString());
             }
@@ -171,6 +170,24 @@
 
         /// <inheritdoc/>
         public abstract void TransferIn(Entity entity);
+
+        /// <inheritdoc/>
+        public IList<Statistic> GetStatistics()
+        {
+            return new List<Statistic>(this.statistics);
+        }
+
+        /// <inheritdoc/>
+        public IList<WaitingFile> GetWaitingFiles()
+        {
+            return new List<WaitingFile>(this.waitingFiles);
+        }
+
+        /// <inheritdoc/>
+        public IList<Resource> GetResources()
+        {
+            return new List<Resource>(this.resources);
+        }
 
         /// <summary>
         /// Adds resource(s) to the element.

@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\CYCLONE\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\model\\element\\cycloneelementbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|d:\\cyclone\\cyclone.template\\combi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCB54A9F-74DC-4089-A884-57951B89652F}|CYCLONE.Template\\CYCLONE.Template.csproj|solutionrelative:cyclone.template\\combi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CycloneElementBase.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
+              "RelativeToolTip": "CYCLONE.Template\\Model\\Element\\CycloneElementBase.cs",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAkwLIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T18:32:50.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Scenario.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Scenario.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Template\\Scenario.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Scenario.cs",
+              "RelativeToolTip": "CYCLONE.Template\\Scenario.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAA5wA8AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T18:22:58.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Combi.cs",
+              "DocumentMoniker": "D:\\CYCLONE\\CYCLONE.Template\\Combi.cs",
+              "RelativeDocumentMoniker": "CYCLONE.Template\\Combi.cs",
+              "ToolTip": "D:\\CYCLONE\\CYCLONE.Template\\Combi.cs",
+              "RelativeToolTip": "CYCLONE.Template\\Combi.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T18:22:45.206Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

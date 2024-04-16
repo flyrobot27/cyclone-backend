@@ -1,10 +1,11 @@
 ﻿namespace CYCLONE.Template
 {
+    using System.Text;
+
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Types;
     using Simphony.Mathematics;
     using Simphony.Simulation;
-    using System.Text;
 
     /// <summary>
     /// Represents a COMBI element in the CYCLONE model.
@@ -69,18 +70,20 @@
         /// <inheritdoc/>
         public override string ToString()
         {
-            var baseString = base.ToString();
-            var sb = new StringBuilder(baseString);
+            var sb = new StringBuilder();
+            sb.AppendLine($"{this.Label} - {this.Description}");
             sb.AppendLine("Preceders:");
             foreach (var queue in this.queueList)
             {
                 sb.AppendLine($"  {queue.ToString()}");
             }
+
             sb.AppendLine("Followers:");
             foreach (var follower in this.Followers)
             {
                 sb.AppendLine($"  {follower.ToString()}");
             }
+
             return sb.ToString();
         }
     }

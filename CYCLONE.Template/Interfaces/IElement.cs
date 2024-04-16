@@ -42,5 +42,23 @@
         /// </summary>
         /// <param name="engine">The Discrete Event Engine.</param>
         void SetDiscreteEventEngine(DiscreteEventEngine engine);
+
+        /// <summary>
+        /// Gets the list of statistics.
+        /// </summary>
+        /// <returns>The list of statistics.</returns>
+        IList<Statistic> GetStatistics();
+
+        /// <summary>
+        /// Gets the list of Waiting Files.
+        /// </summary>
+        /// <returns>The list of waiting files.</returns>
+        IList<WaitingFile> GetWaitingFiles();
+
+        /// <summary>
+        /// Gets the list of resources.
+        /// </summary>
+        /// <returns>The list of resources.</returns>
+        IList<Resource> GetResources();
     }
 }

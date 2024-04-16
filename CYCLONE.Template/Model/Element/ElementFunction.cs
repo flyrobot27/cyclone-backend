@@ -35,6 +35,7 @@
             {
                 stringBuilder.AppendLine(follower.ToString());
             }
+
             return stringBuilder.ToString();
         }
 
