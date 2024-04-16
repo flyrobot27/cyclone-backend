@@ -10,8 +10,21 @@ namespace CYCLONE.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
+            
+            var app = builder.Build();
+            
+            app.UseCors("AllowAll");
+            
             app.MapPost("/api/cyclone", async (HttpRequest request) =>
             {
                 string body = string.Empty;
