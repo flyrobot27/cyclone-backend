@@ -1,7 +1,7 @@
 ﻿namespace CYCLONE.Template
 {
     using System.Collections.Generic;
-    using System.Xml.Linq;
+    using ConsoleTables;
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.ResultContainers;
     using CYCLONE.Template.Types;
@@ -24,12 +24,13 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Scenario"/> class.
         /// </summary>
+        /// <param name="processName">The name of the process.</param>
         /// <param name="engine">The <see cref="DiscreteEventEngine"/>.</param>
         /// <param name="length">Maximum execution time of the model. If no limit is desired, set it to 0.</param>
         /// <param name="numberOfRuns">Number of simulations to run for Monte-Carlo simulation.</param>
         /// <param name="seed">Set randomization seed. Non-zero if reproducability is desired. 0 if fully randomize is desired.</param>
         /// <param name="debug">Set to true to enable debug mode.</param>
-        public Scenario(DiscreteEventEngine engine, double length, int numberOfRuns = 1, int seed = 0, bool debug = false)
+        public Scenario(string processName, DiscreteEventEngine engine, double length, int numberOfRuns = 1, int seed = 0, bool debug = false)
         {
             engine.ExceptionIfNull(nameof(engine));
             length.ExceptionIfNegative(nameof(length));
@@ -41,6 +42,7 @@
             this.numberOfRuns = numberOfRuns;
             this.seed = seed;
             this.debug = debug;
+            this.ProcessName = processName;
         }
 
         /// <summary>
@@ -62,6 +64,16 @@
         /// Gets the waiting file results.
         /// </summary>
         public Dictionary<string, WaitingFileResult> WaitingFileResults { get; } = [];
+
+        /// <summary>
+        /// Gets the termination time of the scenario.
+        /// </summary>
+        public NumericStatistic TerminationTime { get; } = new("TerminationTime", NumericStatisticInterpretation.FinishTime);
+
+        /// <summary>
+        /// Gets the name of the process.
+        /// </summary>
+        public string ProcessName { get; }
 
         /// <inheritdoc/>
         public double AbsoluteError => 1E-5;
@@ -91,6 +103,9 @@
             {
                 element.FinalizeRun(runIndex);
             }
+
+            this.engine.CollectStatistic(this.TerminationTime, this.engine.TimeNow);
+            this.TerminationTime.FinalizeRun(runIndex, this.engine.TimeNow);
         }
 
         /// <inheritdoc/>
@@ -101,11 +116,89 @@
                 Console.WriteLine($"Scenario Finished at {this.engine.TimeNow}");
             }
 
+            // Add Termination Time to the non-intrinsic results
+            this.NonIntrinsicResults.Add(
+                $"{this.ProcessName} ({this.TerminationTime.Name})",
+                new NonIntrinsicResult(
+                    this.TerminationTime.Minimum,
+                    this.TerminationTime.Maximum,
+                    this.TerminationTime.Mean,
+                    this.TerminationTime.StandardDeviation,
+                    this.TerminationTime.Observations.Count));
+
             foreach (var element in this.elements)
             {
                 this.CollectStatistics(element);
                 this.CollectCounterResult(element);
                 this.CollectWaitingFileResult(element);
+            }
+
+            if (this.debug)
+            {
+                ConsoleTable consoleTables;
+                Console.WriteLine("Intrinsic Results");
+                consoleTables = new ConsoleTable("Element Name", "Mean", "Standard Deviation", "Minimum", "Maximum", "Current");
+                foreach (var result in this.IntrinsicResults)
+                {
+                    var intrinsicResult = result.Value;
+                    consoleTables.AddRow(
+                        result.Key, 
+                        intrinsicResult.Mean.ToString("N3"), 
+                        intrinsicResult.StdDev.ToString("N3"), 
+                        intrinsicResult.Min.ToString("N3"), 
+                        intrinsicResult.Max.ToString("N3"), 
+                        intrinsicResult.Current.ToString("N3"));
+                }
+
+                consoleTables.Write();
+
+                Console.WriteLine("Non-Intrinsic Results");
+                consoleTables = new ConsoleTable("Element Name", "Mean", "Standard Deviation", "Observations", "Minimum", "Maximum");
+                foreach (var result in this.NonIntrinsicResults)
+                {
+                    var nonIntrinsicResult = result.Value;
+                    consoleTables.AddRow(
+                        result.Key, 
+                        nonIntrinsicResult.Mean.ToString("N3"), 
+                        nonIntrinsicResult.StdDev.ToString("N3"), 
+                        nonIntrinsicResult.ObservationCount.ToString("N3"), 
+                        nonIntrinsicResult.Min.ToString("N3"), 
+                        nonIntrinsicResult.Max.ToString("N3"));
+                }
+
+                consoleTables.Write();
+                
+                Console.WriteLine("Counter Results");
+                consoleTables = new ConsoleTable("Element Name", "Final Count", "Production Rate", "Average Inter-Arrival Time", "First Arrival", "Last Arrival");
+                foreach (var result in this.CounterResults)
+                {
+                    var counterResult = result.Value;
+                    consoleTables.AddRow(
+                        result.Key, 
+                        counterResult.FinalCount.ToString("N3"), 
+                        counterResult.ProductionRate.ToString("N3"),
+                        counterResult.AverageInterArrivalTime.ToString("N3"),
+                        counterResult.FirstArrival.ToString("N3"),
+                        counterResult.LastArrival.ToString("N3"));
+                }
+
+                consoleTables.Write();
+
+                Console.WriteLine("Waiting File Results");
+                consoleTables = new ConsoleTable("Element Name", "Average Length", "Standard Deviation", "Maximum Length", "Current Length", "Average Wait Time");
+                foreach (var result in this.WaitingFileResults)
+                {
+                    var waitingFileResult = result.Value;
+                    consoleTables.AddRow(
+                        result.Key, 
+                        waitingFileResult.AverageLength.ToString("N3"), 
+                        waitingFileResult.StdDev.ToString("N3"), 
+                        waitingFileResult.MaxLength.ToString("N3"), 
+                        waitingFileResult.CurrentLength.ToString("N3"), 
+                        waitingFileResult.AvgWaitTime.ToString("N3"));
+                }
+
+                consoleTables.Write();
             }
         }
 
@@ -123,6 +216,7 @@
                 element.InitializeRun(runIndex);
             }
 
+            this.TerminationTime.InitializeRun(runIndex);
             return this.length;
         }
 

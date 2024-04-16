@@ -76,8 +76,9 @@
         public Scenario ToScenario(DiscreteEventEngine engine, bool debug = false)
         {
             var length = this.result.LengthOfRun;
+            var processName = this.result.ProcessName;
 
-            var scenario = new Scenario(engine: engine, length: length, debug: debug);
+            var scenario = new Scenario(processName: processName, engine: engine, length: length, debug: debug);
 
             this.ParseNetworkInput();
             this.SetBlockFollowersPreceders();
