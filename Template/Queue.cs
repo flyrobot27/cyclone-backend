@@ -29,6 +29,7 @@
             : base(label, description, CycloneNetworkType.QUEUE)
         {
             initialLength.ExceptionIfNegative(nameof(initialLength));
+            multiplyByValue.ExceptionIfNotPositive(nameof(multiplyByValue));
             this.AddWaitingFile(this.innerQueue);
             this.AddStatistics(this.PercentNonempty);
 

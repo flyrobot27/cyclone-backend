@@ -18,6 +18,7 @@
     {
         private readonly ModelBlock result;
         private readonly string jstring;
+        private readonly List<CycloneElementBase> elements = [];
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Decoder"/> class.
@@ -73,7 +74,7 @@
             foreach (NetworkBlock block in this.result.NetworkInput)
             {
                 var initializedBlock = InitializeBlock(block);
-                Console.WriteLine(initializedBlock.GetType());
+                this.elements.Add(initializedBlock);
             }
 
             return scenario;
