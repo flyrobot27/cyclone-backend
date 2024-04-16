@@ -67,11 +67,9 @@
         /// Converts the JSON to a <see cref="Scenario"/>.
         /// </summary>
         /// <returns>The Scenario object.</returns>
-        public Scenario ToScenario()
+        public Scenario ToScenario(DiscreteEventEngine engine)
         {
             var length = this.result.LengthOfRun;
-            //// var terminationCount = this.result.NoOfCycles;
-            var engine = new DiscreteEventEngine();
 
             var scenario = new Scenario(engine: engine, length: length);
 
