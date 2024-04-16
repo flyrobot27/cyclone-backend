@@ -2,6 +2,7 @@ namespace CYCLONE.API
 {
     using System.Text;
     using System.Text.Json;
+    using CYCLONE.Template.Model.Exception;
     using Simphony.Simulation;
 
     public class Endpoints
@@ -28,7 +29,7 @@ namespace CYCLONE.API
 
                     // TODO: Return the results of the simulation
                 }
-                catch (Exception e) when (e is JsonException || e is ArgumentException)
+                catch (Exception e) when (e is JsonException || e is ArgumentException || e is ModelExecutionException)
                 {
                     return Results.BadRequest(e.Message);
                 }
