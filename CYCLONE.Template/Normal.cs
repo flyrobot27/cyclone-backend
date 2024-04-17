@@ -22,7 +22,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Normal"/> class.
         /// </summary>
-        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="label">The label of the element.</param>
         /// <param name="description">The description of the element.</param>
         /// <param name="duration">The duration distribution.</param>
         public Normal(string label, string description, Distribution duration)
@@ -35,7 +35,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Normal"/> class.
         /// </summary>
-        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="label">The label of the element.</param>
         /// <param name="description">The description of the element.</param>
         /// <param name="duration">The duration distribution.</param>
         /// <param name="inheritType">The <see cref="CycloneNetworkType"/> of the inheriting element.</param>

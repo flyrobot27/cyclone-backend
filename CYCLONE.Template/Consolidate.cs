@@ -8,7 +8,7 @@
     /// <summary>
     /// Represents a Consolidate element in the CYCLONE model.
     /// </summary>
-    /// <param name="label">The label of the element. Must be unique across all elements.</param>
+    /// <param name="label">The label of the element.</param>
     /// <param name="description">The description of the element.</param>
     /// <param name="divideByValue">The values to divide the number of entities by.</param>
     public class Consolidate(string label, string? description, int divideByValue = 1)

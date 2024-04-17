@@ -21,7 +21,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Queue"/> class.
         /// </summary>
-        /// <param name="label">The unique label of the queue. Must be unique across all elements.</param>
+        /// <param name="label">The unique label of the queue.</param>
         /// <param name="description">The description of the queue.</param>
         /// <param name="initialLength">The initial length of the queue.</param>
         /// <param name="multiplyByValue">The values to multiply the number of entities by.</param>

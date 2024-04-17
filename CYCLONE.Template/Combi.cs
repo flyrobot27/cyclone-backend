@@ -10,7 +10,7 @@
     /// <summary>
     /// Represents a COMBI element in the CYCLONE model.
     /// </summary>
-    /// <param name="label">The label of the element. Must be unique across all elements.</param>
+    /// <param name="label">The label of the element.</param>
     /// <param name="description">The description of the element.</param>
     /// <param name="duration">The distribution representing the delay duration.</param>
     public class Combi(string label, string description, Distribution duration)

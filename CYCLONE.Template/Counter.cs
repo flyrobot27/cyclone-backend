@@ -15,7 +15,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Counter"/> class.
         /// </summary>
-        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="label">The label of the element.</param>
         /// <param name="description">The description of the element.</param>
         public Counter(string label, string? description)
             : base(label, description, CycloneNetworkType.FUNCTION_COUNTER)

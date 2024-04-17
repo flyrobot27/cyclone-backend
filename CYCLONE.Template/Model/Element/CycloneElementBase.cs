@@ -17,8 +17,6 @@
     public abstract class CycloneElementBase
         : IElement<CycloneNetworkType>
     {
-        private static readonly List<string> ExistingLabels = [];
-
         private readonly List<WaitingFile> waitingFiles = [];
         private readonly List<Statistic> statistics = [];
         private readonly List<Resource> resources = [];
@@ -28,19 +26,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="CycloneElementBase"/> class.
         /// </summary>
-        /// <param name="label">The label of the element. Must be unique across all elements.</param>
+        /// <param name="label">The label of the element</param>
         /// <param name="description">The description of the element.</param>
         /// <param name="type">The Network Type of the element.</param>
         public CycloneElementBase(string label, string? description, CycloneNetworkType type)
         {
-            this.Description = description;
-
-            if (ExistingLabels.Contains(label))
-            {
-                throw new InvalidOperationException($"Label {label} already exists");
-            }
-
-            ExistingLabels.Add(label);
             this.Label = label;
             this.ElementType = type;
 
@@ -48,12 +38,16 @@
             {
                 this.Description = this.GetType().Name;
             }
+            else
+            {
+                this.Description = description;
+            }
         }
 
         /// <summary>
         /// Gets the description of the element.
         /// </summary>
-        public string? Description { get; }
+        public string Description { get; }
 
         /// <summary>
         /// Gets the label of the element.
@@ -92,6 +86,9 @@
             {
                 resource.FinalizeRun(runIndex, this.Engine.TimeNow);
             }
+
+            // Reset the initialized flag
+            this.isInitialized = false;
         }
 
         /// <inheritdoc/>
