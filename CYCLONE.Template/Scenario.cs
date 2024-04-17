@@ -182,6 +182,17 @@
                 }
             }
 
+            foreach (var element in elements)
+            {
+                var label = element.Label;
+
+                // check if label is unique
+                if (this.elements.Exists(e => e.Label.Trim() == label.Trim()))
+                {
+                    throw new ArgumentException($"Element with label {label} already exists in the scenario.");
+                }
+            }
+
             this.elements.AddRange(elements);
         }
 

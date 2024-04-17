@@ -14,7 +14,9 @@
 !/packages/*/lib/*/*.dll
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
-!/Simphony/*.dll
+!/Simphony/Simphony.Common.dll
+!/Simphony/Simphony.Mathematics.dll
+!/Simphony/Simphony.Simulation.dll
 ####################
 # VS Upgrade stuff #
 ####################
