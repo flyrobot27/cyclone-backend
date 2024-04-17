@@ -1,7 +1,6 @@
 ﻿namespace CYCLONE.Template
 {
     using System.Collections.Generic;
-    using ConsoleTables;
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.ResultContainers;
     using CYCLONE.Template.Types;
@@ -131,74 +130,6 @@
                 this.CollectStatistics(element);
                 this.CollectCounterResult(element);
                 this.CollectWaitingFileResult(element);
-            }
-
-            if (this.debug)
-            {
-                ConsoleTable consoleTables;
-                Console.WriteLine("Intrinsic Results");
-                consoleTables = new ConsoleTable("Element Name", "Mean", "Standard Deviation", "Minimum", "Maximum", "Current");
-                foreach (var result in this.IntrinsicResults)
-                {
-                    var intrinsicResult = result.Value;
-                    consoleTables.AddRow(
-                        result.Key, 
-                        intrinsicResult.Mean.ToString("N3"), 
-                        intrinsicResult.StdDev.ToString("N3"), 
-                        intrinsicResult.Min.ToString("N3"), 
-                        intrinsicResult.Max.ToString("N3"), 
-                        intrinsicResult.Current.ToString("N3"));
-                }
-
-                consoleTables.Write();
-
-                Console.WriteLine("Non-Intrinsic Results");
-                consoleTables = new ConsoleTable("Element Name", "Mean", "Standard Deviation", "Observations", "Minimum", "Maximum");
-                foreach (var result in this.NonIntrinsicResults)
-                {
-                    var nonIntrinsicResult = result.Value;
-                    consoleTables.AddRow(
-                        result.Key, 
-                        nonIntrinsicResult.Mean.ToString("N3"), 
-                        nonIntrinsicResult.StdDev.ToString("N3"), 
-                        nonIntrinsicResult.ObservationCount.ToString("N3"), 
-                        nonIntrinsicResult.Min.ToString("N3"), 
-                        nonIntrinsicResult.Max.ToString("N3"));
-                }
-
-                consoleTables.Write();
-                
-                Console.WriteLine("Counter Results");
-                consoleTables = new ConsoleTable("Element Name", "Final Count", "Production Rate", "Average Inter-Arrival Time", "First Arrival", "Last Arrival");
-                foreach (var result in this.CounterResults)
-                {
-                    var counterResult = result.Value;
-                    consoleTables.AddRow(
-                        result.Key, 
-                        counterResult.FinalCount.ToString("N3"), 
-                        counterResult.ProductionRate.ToString("N3"),
-                        counterResult.AverageInterArrivalTime.ToString("N3"),
-                        counterResult.FirstArrival.ToString("N3"),
-                        counterResult.LastArrival.ToString("N3"));
-                }
-
-                consoleTables.Write();
-
-                Console.WriteLine("Waiting File Results");
-                consoleTables = new ConsoleTable("Element Name", "Average Length", "Standard Deviation", "Maximum Length", "Current Length", "Average Wait Time");
-                foreach (var result in this.WaitingFileResults)
-                {
-                    var waitingFileResult = result.Value;
-                    consoleTables.AddRow(
-                        result.Key, 
-                        waitingFileResult.AverageLength.ToString("N3"), 
-                        waitingFileResult.StdDev.ToString("N3"), 
-                        waitingFileResult.MaxLength.ToString("N3"), 
-                        waitingFileResult.CurrentLength.ToString("N3"), 
-                        waitingFileResult.AvgWaitTime.ToString("N3"));
-                }
-
-                consoleTables.Write();
             }
         }
 

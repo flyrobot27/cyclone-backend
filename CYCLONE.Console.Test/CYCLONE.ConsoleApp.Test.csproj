@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="ConsoleTables" Version="2.6.1" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CYCLONE.API\CYCLONE.API.csproj" />
   </ItemGroup>
   <ItemGroup>
