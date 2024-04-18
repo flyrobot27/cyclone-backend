@@ -2,6 +2,8 @@ namespace CYCLONE.API
 {
     using System.Text;
     using System.Text.Json;
+    using System.Text.Json.Serialization;
+
     using CYCLONE.Template.Model.Exception;
     using Simphony.Simulation;
 
@@ -20,7 +22,7 @@ namespace CYCLONE.API
                            .AllowAnyMethod();
                 });
             });
-            
+
             var app = builder.Build();
             
             app.UseCors("AllowAll");
@@ -49,7 +51,12 @@ namespace CYCLONE.API
                         {"waitingFileResult", scenario.WaitingFileResults},
                     };
 
-                    return Results.Ok(returnDict);
+                    var options = new JsonSerializerOptions
+                    {
+                        NumberHandling = JsonNumberHandling.AllowReadingFromString,
+                    };
+
+                    return Results.Json(returnDict);
                 }
                 catch (Exception e) when (e is JsonException || e is ArgumentException || e is ModelExecutionException)
                 {
@@ -58,6 +65,10 @@ namespace CYCLONE.API
                 catch (NotImplementedException)
                 {
                     return Results.Problem("Not implemented");
+                }
+                catch (Exception e)
+                {
+                    return Results.Problem(e.Message);
                 }
             });
 

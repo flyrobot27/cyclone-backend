@@ -1,6 +1,7 @@
 ﻿namespace CYCLONE.API.JSONDecode
 {
     using System.Text.Json;
+    using System.Text.Json.Serialization;
     using CYCLONE.API.JSONDecode.Blocks;
     using CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock;
     using CYCLONE.API.JSONDecode.Blocks.NetworkInput;
@@ -39,6 +40,7 @@
                 PropertyNameCaseInsensitive = true,
                 WriteIndented = true,
                 IncludeFields = true,
+                NumberHandling = JsonNumberHandling.AllowReadingFromString,
             };
 #pragma warning restore CA1869
             deserializeOptions.Converters.Add(new NetworkBlockConverter());
