@@ -3,6 +3,7 @@ namespace CYCLONE.ConsoleApp.Test
 {
     using ConsoleTables;
     using CYCLONE.API.JSONDecode;
+    using CYCLONE.API.JSONDecode.Extension;
     using Simphony.Simulation;
 
     internal class Program
@@ -166,7 +167,7 @@ namespace CYCLONE.ConsoleApp.Test
 			var scenario = decoder.ToScenario(engine, debug: true);
 
 			engine.InitializeEngine();
-			var terminationReason = engine.Simulate(scenario);
+			var terminationReason = engine.Simulate(scenario).GetDescriptionAttribute();
 
             ConsoleTable consoleTables;
             Console.WriteLine("Intrinsic Results");

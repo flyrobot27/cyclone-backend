@@ -3,7 +3,7 @@ namespace CYCLONE.API
     using System.Text;
     using System.Text.Json;
     using System.Text.Json.Serialization;
-
+    using CYCLONE.API.JSONDecode.Extension;
     using CYCLONE.Template.Model.Exception;
     using Simphony.Simulation;
 
@@ -44,7 +44,7 @@ namespace CYCLONE.API
 
                     var returnDict = new Dictionary<string, object>
                     {
-                        {"terminationReason", terminationReason.ToString()},
+                        {"terminationReason", terminationReason.GetDescriptionAttribute()},
                         {"intrinsicResult", scenario.IntrinsicResults},
                         {"nonIntrinsicResult", scenario.NonIntrinsicResults},
                         {"counterResult", scenario.CounterResults},
