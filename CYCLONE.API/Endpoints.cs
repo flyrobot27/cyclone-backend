@@ -66,10 +66,6 @@ namespace CYCLONE.API
                 {
                     return Results.Problem("Not implemented");
                 }
-                catch (Exception e)
-                {
-                    return Results.Problem(e.Message);
-                }
             });
 
             app.Run();
