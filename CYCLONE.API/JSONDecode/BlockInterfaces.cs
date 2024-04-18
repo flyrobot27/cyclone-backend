@@ -23,5 +23,4 @@
         /// </summary>
         List<ReferenceBlock> Preceders { get; set; }
     }
-
 }
