@@ -37,7 +37,7 @@ namespace CYCLONE.API
                 {
                     var decoder = new JSONDecode.Decoder(body);
                     var engine = new DiscreteEventEngine();
-                    var scenario = decoder.ToScenario(engine, debug: true);
+                    var scenario = decoder.ToScenario(engine, debug: false);
 
                     engine.InitializeEngine();
                     var terminationReason = engine.Simulate(scenario);
