@@ -20,9 +20,9 @@
         required public double Par1 { get; set; }
 
         /// <summary>
-        /// Gets or Sets the Par2 of the <see cref="NonStationaryBlock"/>. Only used if <see cref="Category"/> is <see cref="NSTCategory.SECOND"/>.
+        /// Gets or Sets the Par2 of the <see cref="NonStationaryBlock"/>.
         /// </summary>
-        public double? Par2 { get; set; }
+        required public int Par2 { get; set; }
 
         /// <summary>
         /// Gets or Sets the Seed of the <see cref="NonStationaryBlock"/>. Only used if <see cref="Category"/> is <see cref="NSTCategory.SECOND"/>.

@@ -7,7 +7,7 @@
     /// <summary>
     /// Normal network block class representing the JSON structure in Network Input.
     /// </summary>
-    public class NormalNetworkBlock : NetworkBlock, IBlockHasFollowers
+    public class NormalNetworkBlock : NetworkBlock, IBlockHasFollowers, IBlockHasSet
     {
         /// <summary>
         /// Gets or sets the <see cref="DurationBlock"/> of the <see cref="NormalNetworkBlock"/>.

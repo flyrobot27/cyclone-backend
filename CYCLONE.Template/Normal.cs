@@ -21,6 +21,7 @@
         private double lastTime;
         private bool firstEntity = false;
         private int entityCount = 0;
+        private bool firstIncrement = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Normal"/> class.
@@ -80,12 +81,14 @@
             this.WriteDebugMessage(entity, "Arrived");
             this.entityCount++;
 
-            if (this.entityCount >= this.nstParameters?.RealizationNumber)
+            if (this.entityCount > this.nstParameters?.RealizationNumber && this.firstIncrement)
             {
                 var increment = this.nstParameters.Increment;
                 var seed = this.nstParameters.Seed;
 
                 this.duration = IncrementDistributionValue(this.duration, increment, seed);
+                this.WriteDebugMessage(entity, $"Incremented distribution {this.duration.GetType()} by {increment}");
+                this.firstIncrement = false;
             }
 
             if (!this.firstEntity)

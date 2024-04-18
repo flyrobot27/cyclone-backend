@@ -1,14 +1,17 @@
 ﻿namespace CYCLONE.API.JSONDecode
 {
+    using System.Runtime.CompilerServices;
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using CYCLONE.API.JSONDecode.Blocks;
     using CYCLONE.API.JSONDecode.Blocks.DistrbutionBlock;
+    using CYCLONE.API.JSONDecode.Blocks.DurationInput;
     using CYCLONE.API.JSONDecode.Blocks.NetworkInput;
     using CYCLONE.API.JSONDecode.Converters;
     using CYCLONE.Template;
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Element;
+    using CYCLONE.Template.Parameters;
     using CYCLONE.Template.Types;
     using Simphony;
     using Simphony.Mathematics;
@@ -153,7 +156,8 @@
                 case CycloneNetworkType.COMBI:
                     CombiBlock combiBlock = (CombiBlock)block;
                     Distribution set = GetDistribution(combiBlock.Set.Distribution);
-                    return new Combi(combiBlock.Label.ToString(), combiBlock.Description, set);
+                    NonStaionaryParameters? combinstParameters = GetNonStaionaryParameters(combiBlock);
+                    return new Combi(combiBlock.Label.ToString(), combiBlock.Description, set, combinstParameters);
 
                 case CycloneNetworkType.QUEUE:
                     QueueBlock queueBlock = (QueueBlock)block;
@@ -164,7 +168,8 @@
                 case CycloneNetworkType.NORMAL:
                     NormalNetworkBlock normalNetworkBlock = (NormalNetworkBlock)block;
                     Distribution duration = GetDistribution(normalNetworkBlock.Set.Distribution);
-                    return new Template.Normal(normalNetworkBlock.Label.ToString(), normalNetworkBlock.Description, duration);
+                    NonStaionaryParameters? normalnstParameters = GetNonStaionaryParameters(normalNetworkBlock);
+                    return new Template.Normal(normalNetworkBlock.Label.ToString(), normalNetworkBlock.Description, duration, normalnstParameters);
 
                 case CycloneNetworkType.FUNCTION_CONSOLIDATE:
                     FunctionConsolidateBlock functionConsolidateBlock = (FunctionConsolidateBlock)block;
@@ -178,6 +183,18 @@
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        private static NonStaionaryParameters? GetNonStaionaryParameters(IBlockHasSet block)
+        {
+            NonStaionaryParameters? nstParameters = null;
+            if (block.Set.Type == DurationType.NST)
+            {
+                var setInput = (NonStationaryBlock)block.Set;
+                nstParameters = new NonStaionaryParameters(setInput.Par1, setInput.Par2, setInput.Seed ?? 0);
+            }
+
+            return nstParameters;
         }
 
         private static int GetQueueInitialLength(QueueBlock queueBlock)

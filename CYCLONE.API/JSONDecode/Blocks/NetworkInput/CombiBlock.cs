@@ -7,7 +7,7 @@
     /// <summary>
     /// Combi block class representing the JSON structure in Network Input.
     /// </summary>
-    public class CombiBlock : NetworkBlock, IBlockHasFollowers, IBlockHasPreceders
+    public class CombiBlock : NetworkBlock, IBlockHasFollowers, IBlockHasPreceders, IBlockHasSet
     {
         /// <summary>
         /// Gets or sets the <see cref="DurationBlock"/> of the <see cref="CombiBlock"/>.

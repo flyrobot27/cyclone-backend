@@ -41,7 +41,8 @@ namespace CYCLONE.ConsoleApp.Test
 				          "shape2": 0.5
 				        },
 				        "category": "FIRST",
-				        "par1": 0
+				        "par1": 1,
+						"par2": 1
 				      },
 				      "description": "Resupply stack",
 				      "followers": [

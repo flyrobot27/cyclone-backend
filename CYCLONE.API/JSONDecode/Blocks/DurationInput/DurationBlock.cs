@@ -7,8 +7,6 @@
     /// <summary>
     /// Duration block class representing the JSON structure for Duration Input.
     /// </summary>
-    //[JsonPolymorphic(TypeDiscriminatorPropertyName = nameof(Type))]
-    //[JsonDerivedType(typeof(NonStationaryBlock), nameof(DurationType.NST))]
     public class DurationBlock
     {
         /// <summary>
