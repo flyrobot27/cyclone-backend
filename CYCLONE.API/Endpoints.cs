@@ -37,7 +37,7 @@ namespace CYCLONE.API
                 {
                     var decoder = new JSONDecode.Decoder(body);
                     var engine = new DiscreteEventEngine();
-                    var scenario = decoder.ToScenario(engine, debug: false);
+                    var scenario = decoder.ToScenario(engine, debug: true);
 
                     engine.InitializeEngine();
                     var terminationReason = engine.Simulate(scenario);
@@ -65,10 +65,6 @@ namespace CYCLONE.API
                 catch (NotImplementedException)
                 {
                     return Results.Problem("Not implemented");
-                }
-                catch (Exception e)
-                {
-                    return Results.Problem(e.Message);
                 }
             });
 
