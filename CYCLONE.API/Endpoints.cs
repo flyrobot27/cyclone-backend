@@ -19,8 +19,7 @@ namespace CYCLONE.API
                 {
                     builder.AllowAnyOrigin()
                            .AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowCredentials();
+                           .AllowAnyMethod();
                 });
             });
 
