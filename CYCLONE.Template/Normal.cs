@@ -5,6 +5,7 @@
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Model.Element;
     using CYCLONE.Template.Model.Exception;
+    using CYCLONE.Template.Parameters;
     using CYCLONE.Template.Types;
     using Simphony.Mathematics;
     using Simphony.Simulation;
@@ -14,10 +15,12 @@
     /// </summary>
     public class Normal : CycloneElementBase, IAddFollowers<CycloneNetworkType>
     {
-        private readonly Distribution duration;
+        private readonly NonStaionaryParameters? nstParameters;
+        private Distribution duration;
 
         private double lastTime;
         private bool firstEntity = false;
+        private int entityCount = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Normal"/> class.
@@ -25,11 +28,15 @@
         /// <param name="label">The label of the element.</param>
         /// <param name="description">The description of the element.</param>
         /// <param name="duration">The duration distribution.</param>
-        public Normal(string label, string description, Distribution duration)
+        /// <param name="nstParameters">The <see cref="NonStaionaryParameters"/> for Non stationary inputs.</param>
+        public Normal(string label, string description, Distribution duration, NonStaionaryParameters? nstParameters = null)
             : base(label, description, CycloneNetworkType.NORMAL)
         {
             this.AddStatistics(this.InterArrivalTime);
             this.duration = duration;
+            this.nstParameters = nstParameters;
+
+            Distribution.Seed(nstParameters?.Seed ?? 0);
         }
 
         /// <summary>
@@ -39,11 +46,14 @@
         /// <param name="description">The description of the element.</param>
         /// <param name="duration">The duration distribution.</param>
         /// <param name="inheritType">The <see cref="CycloneNetworkType"/> of the inheriting element.</param>
-        protected Normal(string label, string description, Distribution duration, CycloneNetworkType inheritType)
+        protected Normal(string label, string description, Distribution duration, CycloneNetworkType inheritType, NonStaionaryParameters? nstParameters = null)
             : base(label, description, inheritType)
         {
             this.AddStatistics(this.InterArrivalTime);
             this.duration = duration;
+            this.nstParameters = nstParameters;
+
+            Distribution.Seed(nstParameters?.Seed ?? 0);
         }
 
         /// <summary>
@@ -68,6 +78,16 @@
         public override void TransferIn(Entity entity)
         {
             this.WriteDebugMessage(entity, "Arrived");
+            this.entityCount++;
+
+            if (this.entityCount >= this.nstParameters?.RealizationNumber)
+            {
+                var increment = this.nstParameters.Increment;
+                var seed = this.nstParameters.Seed;
+
+                this.duration = IncrementDistributionValue(this.duration, increment, seed);
+            }
+
             if (!this.firstEntity)
             {
                 this.Engine.CollectStatistic(this.InterArrivalTime, this.Engine.TimeNow - this.lastTime);
@@ -109,6 +129,7 @@
             }
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             var baseString = base.ToString();
@@ -120,6 +141,42 @@
             }
 
             return sb.ToString();
+        }
+
+        private static Distribution IncrementDistributionValue(Distribution distribution, double increment, int seed)
+        {
+            if (distribution is Simphony.Mathematics.Normal normal)
+            {
+                return new Simphony.Mathematics.Normal(normal.Mean + increment, normal.StandardDeviation);
+            }
+            else if (distribution is Constant constat)
+            {
+                return new Constant(constat.Value + increment);
+            }
+            else if (distribution is Exponential exponential)
+            {
+                return new Exponential(exponential.Rate + increment);
+            }
+            else if (distribution is Triangular triangular)
+            {
+                return new Triangular(triangular.Minimum + increment, triangular.Maximum + increment, triangular.Mode + increment);
+            }
+            else if (distribution is Uniform uniform)
+            {
+                return new Uniform(uniform.Minimum + increment, uniform.Maximum + increment);
+            }
+            else if (distribution is LogNormal logNormal)
+            {
+                return new LogNormal(logNormal.Scale + increment, logNormal.Shape);
+            }
+            else if (distribution is Beta beta)
+            {
+                return new Beta(beta.Shape1, beta.Shape2, beta.Low + increment, beta.High + increment);
+            }
+            else
+            {
+                throw new InvalidOperationException("Distribution type not supported");
+            }
         }
 
         private void OnTransferOut(Entity entity)

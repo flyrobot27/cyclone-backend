@@ -3,6 +3,7 @@
     using System.Text;
 
     using CYCLONE.Template.Interfaces;
+    using CYCLONE.Template.Parameters;
     using CYCLONE.Template.Types;
     using Simphony.Mathematics;
     using Simphony.Simulation;
@@ -13,8 +14,9 @@
     /// <param name="label">The label of the element.</param>
     /// <param name="description">The description of the element.</param>
     /// <param name="duration">The distribution representing the delay duration.</param>
-    public class Combi(string label, string description, Distribution duration)
-        : Normal(label, description, duration, CycloneNetworkType.COMBI), IAddPreceders<CycloneNetworkType>
+    /// <param name="nstParameters">The <see cref="NonStaionaryParameters"/> for Non stationary inputs.</param>
+    public class Combi(string label, string description, Distribution duration, NonStaionaryParameters? nstParameters = null)
+        : Normal(label, description, duration, CycloneNetworkType.COMBI, nstParameters), IAddPreceders<CycloneNetworkType>
     {
         private readonly IList<Queue> queueList = [];
 
