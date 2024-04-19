@@ -14,6 +14,7 @@
             {
                 return reader.GetInt32().ToString();
             }
+            
             return reader.GetString() ?? string.Empty;
         }
 

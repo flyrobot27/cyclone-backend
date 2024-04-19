@@ -1,7 +1,8 @@
 ﻿namespace CYCLONE.Template
 {
-    using CYCLONE.Template.Model.Exception;
     using CYCLONE.Template.Model.Element;
+    using CYCLONE.Template.Model.Exception;
+
     using CYCLONE.Template.Types;
     using Simphony;
     using Simphony.Simulation;

@@ -1,9 +1,10 @@
 ﻿namespace CYCLONE.Template.Model.Element
 {
+    using System.Text;
+
     using CYCLONE.Template.Interfaces;
     using CYCLONE.Template.Types;
     using Simphony.Simulation;
-    using System.Text;
 
     /// <summary>
     /// Represents a function element in the CYCLONE model.
