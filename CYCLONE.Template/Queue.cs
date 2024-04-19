@@ -108,9 +108,8 @@
                 for (var outputCount = 1; outputCount <= this.multiplyByValue; outputCount++)
                 {
                     this.Engine.ScheduleEvent(new Entity(), new Action<Entity>(Scan), 0);
+                    scanTriggered = true;
                 }
-
-                scanTriggered = true;
             }
         }
 
