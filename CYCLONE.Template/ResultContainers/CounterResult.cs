@@ -13,28 +13,28 @@
     public class CounterResult(double finalCount, double productionRate, double averageInterArrivalTime, double firstArrival, double lastArrival)
     {
         /// <summary>
-        /// Gets the final items counted at the counter.
+        /// Gets the final items counted at the counter as a string.
         /// </summary>
-        public double FinalCount { get; } = finalCount;
+        public string FinalCount { get; } = finalCount.ToString("N3");
         
         /// <summary>
-        /// Gets the steady state rate of production.
+        /// Gets the steady state rate of production as a string
         /// </summary>
-        public double ProductionRate { get; } = productionRate;
+        public string ProductionRate { get; } = productionRate.ToString("N3");
 
         /// <summary>
-        /// Gets the average inter-arrival time.
+        /// Gets the average inter-arrival time as a string
         /// </summary>
-        public double AverageInterArrivalTime { get; } = averageInterArrivalTime;
+        public string AverageInterArrivalTime { get; } = averageInterArrivalTime.ToString("N3");
 
         /// <summary>
-        /// Gets the time of the first arrival.
+        /// Gets the time of the first arrival as a string
         /// </summary>
-        public double FirstArrival { get; } = firstArrival;
+        public string FirstArrival { get; } = firstArrival.ToString("N3");
 
         /// <summary>
-        /// Gets the time of the last arrival.
+        /// Gets the time of the last arrival as a string
         /// </summary>
-        public double LastArrival { get; } = lastArrival;
+        public string LastArrival { get; } = lastArrival.ToString("N3");
     }
 }

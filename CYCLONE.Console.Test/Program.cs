@@ -178,11 +178,11 @@ namespace CYCLONE.ConsoleApp.Test
                 var intrinsicResult = result.Value;
                 consoleTables.AddRow(
                     result.Key,
-                    intrinsicResult.Mean.ToString("N3"),
-                    intrinsicResult.StdDev.ToString("N3"),
-                    intrinsicResult.Min.ToString("N3"),
-                    intrinsicResult.Max.ToString("N3"),
-                    intrinsicResult.Current.ToString("N3"));
+                    intrinsicResult.Mean,
+                    intrinsicResult.StdDev,
+                    intrinsicResult.Min,
+                    intrinsicResult.Max,
+                    intrinsicResult.Current);
             }
 
             consoleTables.Write();
@@ -194,11 +194,11 @@ namespace CYCLONE.ConsoleApp.Test
                 var nonIntrinsicResult = result.Value;
                 consoleTables.AddRow(
                     result.Key,
-                    nonIntrinsicResult.Mean.ToString("N3"),
-                    nonIntrinsicResult.StdDev.ToString("N3"),
-                    nonIntrinsicResult.ObservationCount.ToString("N3"),
-                    nonIntrinsicResult.Min.ToString("N3"),
-                    nonIntrinsicResult.Max.ToString("N3"));
+                    nonIntrinsicResult.Mean,
+                    nonIntrinsicResult.StdDev,
+                    nonIntrinsicResult.ObservationCount,
+                    nonIntrinsicResult.Min,
+                    nonIntrinsicResult.Max);
             }
 
             consoleTables.Write();
@@ -210,11 +210,11 @@ namespace CYCLONE.ConsoleApp.Test
                 var counterResult = result.Value;
                 consoleTables.AddRow(
                     result.Key,
-                    counterResult.FinalCount.ToString("N3"),
-                    counterResult.ProductionRate.ToString("N3"),
-                    counterResult.AverageInterArrivalTime.ToString("N3"),
-                    counterResult.FirstArrival.ToString("N3"),
-                    counterResult.LastArrival.ToString("N3"));
+                    counterResult.FinalCount,
+                    counterResult.ProductionRate,
+                    counterResult.AverageInterArrivalTime,
+                    counterResult.FirstArrival,
+                    counterResult.LastArrival);
             }
 
             consoleTables.Write();
@@ -226,11 +226,11 @@ namespace CYCLONE.ConsoleApp.Test
                 var waitingFileResult = result.Value;
                 consoleTables.AddRow(
                     result.Key,
-                    waitingFileResult.AverageLength.ToString("N3"),
-                    waitingFileResult.StdDev.ToString("N3"),
-                    waitingFileResult.MaxLength.ToString("N3"),
-                    waitingFileResult.CurrentLength.ToString("N3"),
-                    waitingFileResult.AvgWaitTime.ToString("N3"));
+                    waitingFileResult.AverageLength,
+                    waitingFileResult.StdDev,
+                    waitingFileResult.MaxLength,
+                    waitingFileResult.CurrentLength,
+                    waitingFileResult.AvgWaitTime);
             }
 
             consoleTables.Write();

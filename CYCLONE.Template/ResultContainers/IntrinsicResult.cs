@@ -13,28 +13,28 @@
     public class IntrinsicResult(double min, double max, double mean, double stdDev, double current)
     {
         /// <summary>
-        /// Gets the Minimum Value Observed.
+        /// Gets the Minimum Value Observed as a string
         /// </summary>
-        public double Min { get; } = min;
+        public string Min { get; } = min.ToString("N3");
 
         /// <summary>
-        /// Gets the Maximum Value Observed.
+        /// Gets the Maximum Value Observed as a string.
         /// </summary>
-        public double Max { get; } = max;
+        public string Max { get; } = max.ToString("N3");
 
         /// <summary>
-        /// Gets the Average Value Observed.
+        /// Gets the Average Value Observed as a string.
         /// </summary>
-        public double Mean { get; } = mean;
+        public string Mean { get; } = mean.ToString("N3");
 
         /// <summary>
-        /// Gets the Standard Deviation.
+        /// Gets the Standard Deviation as a string.
         /// </summary>
-        public double StdDev { get; } = stdDev;
+        public string StdDev { get; } = stdDev.ToString("N3");
 
         /// <summary>
-        /// Gets the Current Value.
+        /// Gets the Current Value as a string.
         /// </summary>
-        public double Current { get; } = current;
+        public string Current { get; } = current.ToString("N3");
     }
 }

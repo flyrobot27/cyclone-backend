@@ -15,26 +15,26 @@
         /// <summary>
         /// Gets the Average number of <see cref="Entity"/> in the <see cref="WaitingFile"/>.
         /// </summary>
-        public double AverageLength { get; } = averageLength;
+        public string AverageLength { get; } = averageLength.ToString("N3");
 
         /// <summary>
         /// Gets the Standard Deviation of the <see cref="AverageLength"/>.
         /// </summary>
-        public double StdDev { get; } = stdDev;
+        public string StdDev { get; } = stdDev.ToString("N3");
 
         /// <summary>
         /// Gets the Maximum number of <see cref="Entity"/> in the <see cref="WaitingFile"/>.
         /// </summary>
-        public double MaxLength { get; } = maxLength;
+        public string MaxLength { get; } = maxLength.ToString("N3");
 
         /// <summary>
         /// Gets the Current Number of <see cref="Entity"/> in the <see cref="WaitingFile"/>.
         /// </summary>
-        public double CurrentLength { get; } = currentLength;
+        public string CurrentLength { get; } = currentLength.ToString("N3");
 
         /// <summary>
         /// Gets the Average Waiting Time for an <see cref="Entity"/> before it is dequeued from the <see cref="WaitingFile"/>.
         /// </summary>
-        public double AvgWaitTime { get; } = avgWaitTime;
+        public string AvgWaitTime { get; } = avgWaitTime.ToString("N3");
     }
 }
