@@ -9,7 +9,6 @@ ARG TARGETARCH
 WORKDIR /src
 COPY ["CYCLONE.API/CYCLONE.API.csproj", "CYCLONE.API/"]
 COPY ["CYCLONE.Template/CYCLONE.Template.csproj", "CYCLONE.Template/"]
-COPY ["CYCLONE.Console.Test/CYCLONE.ConsoleApp.Test.csproj", "CYCLONE.Console.Test/"]
 CMD bash
 RUN dotnet restore "CYCLONE.API/CYCLONE.API.csproj"
 COPY . .
