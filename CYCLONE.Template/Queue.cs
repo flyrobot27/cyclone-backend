@@ -103,10 +103,10 @@
             this.Engine.EnqueueEntity(entity, this.innerQueue);
             this.Engine.CollectStatistic(this.PercentNonempty, Math.Sign(this.innerQueue.Count));
 
-            if (!scanTriggered)
+            // Multiply the number of entities by the value
+            for (var outputCount = 1; outputCount <= this.multiplyByValue; outputCount++)
             {
-                // Multiply the number of entities by the value
-                for (var outputCount = 1; outputCount <= this.multiplyByValue; outputCount++)
+                if (!scanTriggered)
                 {
                     this.Engine.ScheduleEvent(new Entity(), new Action<Entity>(Scan), 0);
                     scanTriggered = true;
