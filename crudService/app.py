@@ -97,7 +97,7 @@ def get_current_warnings(data: dict):
 
 
 @app.route('/api/models', methods=['POST'])
-def api():
+def modify_model():
     data = request.json
     overwriteExisting = request.args.get('overwriteExisting', default=False, type=bool)
     try:
