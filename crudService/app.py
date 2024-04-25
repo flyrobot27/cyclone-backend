@@ -43,8 +43,8 @@ def overwrite_existing_with_data(processName: str, workspace: dict | list, curre
                 LIMIT 1
                 """, name=processName, workspace=json.dumps(workspace), current_warnings=json.dumps(currentWarnings))
 
-            # return the only result (There should only be 1)
-            return result.single()['n.name']
+    # return the only result (There should only be 1)
+    return result.single()['n.name']
 
 
 def create_new_process_with_data(processName: str, workspace: dict | list, currentWarnings: dict | list):
@@ -57,8 +57,8 @@ def create_new_process_with_data(processName: str, workspace: dict | list, curre
                 LIMIT 1
                 """, name=processName, workspace=json.dumps(workspace), current_warnings=json.dumps(currentWarnings))
 
-            # return the only result (There should only be 1)
-            return result.single()['n.name']
+    # return the only result (There should only be 1)
+    return result.single()['n.name']
 
 
 def get_process_workspace(processName: str):
@@ -68,12 +68,13 @@ def get_process_workspace(processName: str):
                 "MATCH (n:Process {name: $name}) RETURN n.workspace, n.current_warnings LIMIT 1", name=processName)
 
             record = result.single()
-            if record is None:
-                return jsonify({"error": f"Process {processName} does not exist."}), status.NOT_FOUND.value
-            # get the workspace and current_warnings from the record
-            workspace = json.loads(record['n.workspace'])
-            currentWarnings = json.loads(record['n.current_warnings'])
-            return {PROCESS_NAME: processName, "workspace": workspace, "currentWarnings": currentWarnings}, status.OK.value
+    
+    if record is None:
+        return jsonify({"error": f"Process {processName} does not exist."}), status.NOT_FOUND.value
+    # get the workspace and current_warnings from the record
+    workspace = json.loads(record['n.workspace'])
+    currentWarnings = json.loads(record['n.current_warnings'])
+    return {PROCESS_NAME: processName, "workspace": workspace, "currentWarnings": currentWarnings}, status.OK.value
 
 
 def delete_existing_process(processName: str):
@@ -81,7 +82,8 @@ def delete_existing_process(processName: str):
         with driver.session() as session:
             result = session.run(
                 "MATCH (n:Process {name: $name}) DETACH DELETE n", name=processName)
-            return result.single()['n']
+    
+    return result.single()['n']
 
 
 def get_process_name(data: dict):
