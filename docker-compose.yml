@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  neo4j:
+    image: neo4j:5.19.0-community
+    restart: unless-stopped
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    volumes:
+      - ./db/data:/data
+      - ./db/conf:/conf
+      - ./db/logs:/logs
+      - ./db/plugins:/plugins
+
+  crudservice:
+    build: 
+      context: ./crudService
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - neo4j
+    environment:
+      - NEO4J_URL=bolt://neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=password
+  
+  simulation:
+    build:
+      context: ./CYCLONE
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
