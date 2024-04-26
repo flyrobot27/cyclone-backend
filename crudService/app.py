@@ -122,7 +122,7 @@ def get_model():
     try:
         processName = get_process_name(request.args)
     except KeyError:
-        return jsonify({"error": "Process name not found in request body."}), status.BAD_REQUEST.value
+        return jsonify({"error": "Process name not found in request parameters."}), status.BAD_REQUEST.value
 
     # check if in database
     if not check_if_in_db(processName):
@@ -133,8 +133,11 @@ def get_model():
 
 @app.route('/api/models', methods=['DELETE'])
 def delete_model():
-    processName = get_process_name(request.args)
-    
+    try:
+        processName = get_process_name(request.args)
+    except KeyError:
+        return jsonify({"error": "Process name not found in request parameters."}), status.BAD_REQUEST.value
+
     if not check_if_in_db(processName):
         return jsonify({"error": f"Process {processName} does not exist."}), status.NOT_FOUND.value
 
