@@ -53,7 +53,7 @@ def create_new_process_with_data(processName: str, workspace: dict | list, curre
             result = session.run(
                 """
                 CREATE (n:Process {name: $name, workspace: $workspace, current_warnings: $current_warnings})
-                RETURN n
+                RETURN n.name
                 LIMIT 1
                 """, name=processName, workspace=json.dumps(workspace), current_warnings=json.dumps(currentWarnings))
 
