@@ -101,8 +101,8 @@ def modify_model():
         processName = get_process_name(data)
         workspace = get_workspace(data)
         currentWarnings = get_current_warnings(data)
-    except KeyError:
-        return jsonify({"error": "Process name not found in request body."}), status.BAD_REQUEST.value
+    except KeyError as e:
+        return jsonify({"error": f"{e.args[0]} not found in request body."}), status.BAD_REQUEST.value
 
     # connect to database and check if process name exists in neo4j
     if check_if_in_db(processName):
