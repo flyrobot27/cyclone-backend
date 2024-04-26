@@ -80,11 +80,8 @@ def get_process_workspace(processName: str):
 def delete_existing_process(processName: str):
     with GraphDatabase.driver(URL, auth=AUTH) as driver:
         with driver.session() as session:
-            result = session.run(
-                "MATCH (n:Process {name: $name}) DETACH DELETE n", name=processName)
+            session.run("MATCH (n:Process {name: $name}) DETACH DELETE n", name=processName)
     
-            return result.single()['n']
-
 
 def get_process_name(data: dict):
     return str(data[PROCESS_NAME]).casefold().strip()
