@@ -16,6 +16,9 @@ PROCESS_NAME = "processName"
 WORKSPACE_DATA = "workspaceData"
 WARNINGS = "warnings"
 
+def check_if_json_true(value: str):
+    return str(value).casefold() == "true"
+
 def check_if_in_db(processName: str):
     ''' Get if a process exists within the databse.'''
     existing_processes = list()
@@ -96,7 +99,7 @@ def get_current_warnings(data: dict):
 @app.route('/api/models', methods=['POST'])
 def modify_model():
     data = request.json
-    overwriteExisting = request.args.get('overwriteExisting', default=False, type=bool)
+    overwriteExisting = request.args.get('overwriteExisting', default=False, type=check_if_json_true)
     try:
         processName = get_process_name(data)
         workspace = get_workspace(data)
