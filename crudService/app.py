@@ -136,7 +136,7 @@ def get_model():
 
 @app.route('/api/models', methods=['DELETE'])
 def delete_model():
-    processName = get_process_name(request.json)
+    processName = get_process_name(request.args)
     
     if not check_if_in_db(processName):
         return jsonify({"error": f"Process {processName} does not exist."}), status.NOT_FOUND.value
