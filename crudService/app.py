@@ -123,7 +123,7 @@ def modify_model():
 @app.route('/api/models', methods=['GET'])
 def get_model():
     try:
-        processName = get_process_name(request.json)
+        processName = get_process_name(request.args)
     except KeyError:
         return jsonify({"error": "Process name not found in request body."}), status.BAD_REQUEST.value
 
@@ -153,4 +153,4 @@ def list_models():
                 "MATCH (n:Process) RETURN n.name")
             processNames = [record['n.name'] for record in result]
     
-    return jsonify({"processNames": processNames}), status.OK.value
+    return jsonify({"processName": processNames}), status.OK.value
